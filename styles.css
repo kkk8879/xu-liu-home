@@ -149,9 +149,9 @@ h1 {
 .hero-metrics {
   margin-top: 1.4rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
-  max-width: 760px;
+  max-width: 1120px;
 }
 
 .metric {
