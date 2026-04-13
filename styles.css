@@ -162,6 +162,18 @@ h1 {
   box-shadow: 0 8px 22px rgba(20, 24, 35, 0.06);
 }
 
+.metric-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.metric-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 79, 214, 0.34);
+  box-shadow: 0 10px 24px rgba(20, 24, 35, 0.09);
+}
+
 .metric-value {
   display: block;
   font-size: 1.05rem;
@@ -211,6 +223,18 @@ h1 {
 
 .section {
   margin-top: 5.2rem;
+}
+
+.morning-report {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 246, 255, 0.82) 100%);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.2rem;
+}
+
+.morning-line {
+  margin-top: 0.6rem;
+  color: var(--muted);
 }
 
 .section-head h2 {
