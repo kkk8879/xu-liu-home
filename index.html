@@ -40,7 +40,7 @@
           <span class="metric-value">温暖</span>
           <span class="metric-label">家就是最好的归处</span>
         </div>
-        <a class="metric metric-link" href="#morning-report" aria-label="进入晨报">
+        <a id="open-effort-hub" class="metric metric-link" href="#effort-hub" aria-label="进入奋斗中心">
           <span class="metric-value">奋斗</span>
           <span class="metric-label">一起把明天变得更好</span>
         </a>
@@ -51,10 +51,61 @@
       </div>
     </section>
 
-    <section id="morning-report" class="section morning-report reveal">
-      <p class="eyebrow">MORNING REPORT</p>
-      <h2>晨报</h2>
-      <p class="morning-line">今日计划：认真生活，专注成长，保持热爱。</p>
+    <section id="effort-hub" class="section morning-report reveal hidden">
+      <div class="morning-head">
+        <div>
+          <p class="eyebrow">EFFORT HUB</p>
+          <h2>奋斗中心</h2>
+        </div>
+      </div>
+
+      <p class="morning-line">先选择要查看的内容。</p>
+
+      <div class="effort-tools">
+        <button id="open-morning-report" class="effort-item" type="button">
+          <span class="effort-item-title">晨报 <span id="effort-morning-date" class="effort-date">--</span></span>
+          <span class="effort-item-desc">查看今日摘要与操作建议</span>
+        </button>
+      </div>
+
+      <article id="morning-panel" class="morning-panel hidden" aria-live="polite">
+        <div class="morning-head">
+          <div>
+            <p class="eyebrow">MORNING REPORT</p>
+            <h3>晨报</h3>
+          </div>
+          <span id="morning-date" class="morning-date">2026-04-13</span>
+        </div>
+
+        <p id="morning-summary" class="morning-line">
+          盘面偏震荡，建议以“低位吸纳+分批执行”为主，控制仓位，防止追高。
+        </p>
+
+        <div class="morning-grid">
+          <article class="morning-card">
+            <p class="morning-card-title">关键观察</p>
+            <ul id="morning-highlights" class="morning-list">
+              <li>成交额保持活跃，资金偏好电力与制造链。</li>
+              <li>午后波动放大，需防短线回撤。</li>
+              <li>政策面稳定，情绪中性偏谨慎。</li>
+            </ul>
+          </article>
+
+          <article class="morning-card">
+            <p class="morning-card-title">今日建议</p>
+            <ul id="morning-actions" class="morning-list">
+              <li>采购侧：分批挂单，避免一次性追价。</li>
+              <li>报价侧：保持弹性区间，预留调整空间。</li>
+              <li>风控侧：重点监控偏差电量与高波动时段。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="morning-footer">
+          <a id="morning-full-link" class="btn btn-solid" href="/morning/latest.html">阅读原文</a>
+          <span class="morning-meta">自动展示当日最新晨报</span>
+        </div>
+      </article>
     </section>
 
     <section id="projects" class="section reveal">

@@ -226,15 +226,134 @@ h1 {
 }
 
 .morning-report {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 246, 255, 0.82) 100%);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(194, 109, 63, 0.1) 0%, rgba(194, 109, 63, 0) 45%),
+    radial-gradient(circle at 92% 88%, rgba(30, 79, 214, 0.13) 0%, rgba(30, 79, 214, 0) 42%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 246, 255, 0.82) 100%);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 1.2rem;
+  padding: 1.2rem 1.2rem 1.35rem;
+}
+
+.morning-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.morning-date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(23, 28, 39, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  font-family: "Consolas", "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding: 0.3rem 0.7rem;
 }
 
 .morning-line {
-  margin-top: 0.6rem;
-  color: var(--muted);
+  margin-top: 0.8rem;
+  color: #2b3446;
+  font-size: 1rem;
+}
+
+.morning-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.morning-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(23, 28, 39, 0.15);
+  border-radius: 14px;
+  padding: 0.8rem 0.85rem;
+  box-shadow: 0 8px 20px rgba(20, 24, 35, 0.06);
+}
+
+.morning-card-title {
+  margin: 0;
+  font-family: "Consolas", "Liberation Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #2a56c7;
+}
+
+.morning-list {
+  margin: 0.55rem 0 0;
+  padding-left: 1.05rem;
+}
+
+.morning-list li {
+  margin: 0.28rem 0;
+  color: #3d4a62;
+  font-size: 0.92rem;
+}
+
+.morning-footer {
+  margin-top: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.morning-meta {
+  font-size: 0.82rem;
+  color: #66758f;
+}
+
+.effort-tools {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.effort-item {
+  text-align: left;
+  border: 1px solid rgba(23, 28, 39, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 22px rgba(20, 24, 35, 0.06);
+  padding: 0.8rem 0.9rem;
+  cursor: pointer;
+}
+
+.effort-item:hover {
+  border-color: rgba(30, 79, 214, 0.34);
+}
+
+.effort-item-title {
+  display: block;
+  font-weight: 700;
+  color: #233048;
+}
+
+.effort-date {
+  font-family: "Consolas", "Liberation Mono", monospace;
+  font-size: 0.8rem;
+  color: #5c6678;
+  margin-left: 0.35rem;
+}
+
+.effort-item-desc {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.84rem;
+  color: #66758f;
+}
+
+.morning-panel {
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .section-head h2 {
@@ -371,6 +490,14 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .morning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .effort-tools {
+    grid-template-columns: 1fr;
+  }
+
   .split {
     grid-template-columns: 1fr;
   }
@@ -397,6 +524,16 @@ h1 {
   .hero-actions {
     width: 100%;
     flex-direction: column;
+  }
+
+  .morning-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .morning-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .btn {
