@@ -1,0 +1,2788 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>李尚泽同学 2026 甘肃历史类 411 分志愿填报模型｜专业版</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #d9dee8;
+      --blue: #2563eb;
+      --green: #16854b;
+      --amber: #b26b00;
+      --red: #c2410c;
+      --purple: #7c3aed;
+      --slate: #475467;
+      --soft-blue: #eef4ff;
+      --soft-green: #ecfdf3;
+      --soft-amber: #fff7e6;
+      --soft-red: #fff1ed;
+      --soft-purple: #f4f0ff;
+      --soft-slate: #f2f4f7;
+      --shadow: 0 14px 36px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    header {
+      background: #101828;
+      color: #fff;
+      padding: 28px clamp(18px, 4vw, 48px);
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3.4vw, 42px);
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    header p {
+      max-width: 980px;
+      margin: 0;
+      color: #d0d5dd;
+      font-size: 15px;
+    }
+
+    main { padding: 22px clamp(14px, 3vw, 34px) 48px; }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .top-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 18px;
+      min-height: 118px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .metric .value {
+      font-size: 28px;
+      font-weight: 750;
+      line-height: 1.05;
+    }
+
+    .metric .note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 9px;
+    }
+
+    section {
+      margin-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-end;
+      padding: 18px 18px 0;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .body {
+      padding: 18px;
+    }
+
+    .strategy {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .band {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .band strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .band p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag-rush { color: var(--red); background: var(--soft-red); }
+    .tag-stable { color: var(--blue); background: var(--soft-blue); }
+    .tag-safe { color: var(--green); background: var(--soft-green); }
+    .tag-floor { color: var(--amber); background: var(--soft-amber); }
+
+    .nature-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .nature-public { color: var(--green); background: var(--soft-green); }
+    .nature-voc-bachelor { color: var(--blue); background: var(--soft-blue); }
+    .nature-private { color: var(--purple); background: var(--soft-purple); }
+    .nature-vocational { color: var(--amber); background: var(--soft-amber); }
+    .nature-other { color: var(--slate); background: var(--soft-slate); }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 0 18px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    input, select, button {
+      font: inherit;
+    }
+
+    input[type="search"], select {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 10px;
+    }
+
+    input[type="search"] {
+      min-width: min(360px, 100%);
+      flex: 1;
+    }
+
+    button {
+      min-height: 38px;
+      border: 1px solid #b9c5db;
+      border-radius: 7px;
+      background: #fff;
+      color: #1d2939;
+      padding: 0 12px;
+      cursor: pointer;
+      font-weight: 650;
+    }
+
+    button.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      max-height: 68vh;
+      border-top: 1px solid var(--line);
+    }
+
+    .mobile-plan {
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1180px;
+      background: #fff;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #f2f4f7;
+      color: #344054;
+      text-align: left;
+      font-size: 12px;
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      white-space: nowrap;
+    }
+
+    td {
+      border-bottom: 1px solid #edf0f5;
+      padding: 9px 10px;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    tbody tr {
+      cursor: pointer;
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    tbody tr:hover {
+      background: #f8fbff;
+    }
+
+    tbody tr.selected-row {
+      background: #eaf2ff;
+      box-shadow: inset 4px 0 0 var(--blue);
+    }
+
+    tbody tr.selected-row td {
+      border-bottom-color: #c7d7fe;
+    }
+
+    .row-index {
+      font-weight: 750;
+      color: #475467;
+      width: 52px;
+    }
+
+    .school-select {
+      width: 250px;
+    }
+
+    .score-cell {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .reason {
+      min-width: 260px;
+      color: #344054;
+    }
+
+    .risk {
+      min-width: 90px;
+      font-weight: 750;
+    }
+
+    .mini {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .replacement-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+      line-height: 1.45;
+    }
+
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+    }
+
+    .detail-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+      min-height: 170px;
+    }
+
+    .detail-box h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .detail-box p {
+      margin: 8px 0;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    .list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 11px 12px;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    .sources a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .sources a:hover { text-decoration: underline; }
+
+    .footnote {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 920px) {
+      .top-grid, .strategy, .detail-layout {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        display: block;
+      }
+      .toolbar {
+        align-items: stretch;
+      }
+      input[type="search"], select, button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding: 14px 10px 34px;
+      }
+
+      header {
+        padding: 22px 16px;
+      }
+
+      .card {
+        box-shadow: none;
+      }
+
+      .table-wrap {
+        display: none;
+      }
+
+      .mobile-plan {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .mobile-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        padding: 12px;
+        cursor: pointer;
+      }
+
+      .mobile-item.selected-row {
+        background: #eaf2ff;
+        border-color: #9db9ff;
+        box-shadow: inset 4px 0 0 var(--blue);
+      }
+
+      .mobile-item-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .mobile-index {
+        font-weight: 800;
+        color: #475467;
+      }
+
+      .mobile-item select {
+        margin: 8px 0 10px;
+      }
+
+      .mobile-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        color: #344054;
+        font-size: 13px;
+      }
+
+    .mobile-meta strong {
+        color: #101828;
+      }
+    }
+
+    .empty-state {
+      padding: 22px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    /* Professional edition visual layer */
+    :root {
+      --pro-bg: #f4f6f8;
+      --pro-ink: #111827;
+      --pro-soft: #f8fafc;
+      --pro-line: #d7dde7;
+      --pro-navy: #182235;
+      --pro-teal: #0f766e;
+      --pro-gold: #b7791f;
+      --pro-coral: #b45309;
+      --pro-focus: #1d4ed8;
+      --pro-shadow: 0 18px 50px rgba(24, 34, 53, 0.10);
+      --pro-subtle-shadow: 0 8px 22px rgba(24, 34, 53, 0.06);
+    }
+
+    body {
+      background:
+        linear-gradient(180deg, #eef2f7 0, var(--pro-bg) 360px, #f7f8fb 100%);
+      color: var(--pro-ink);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      background: var(--pro-navy);
+      padding: 34px clamp(18px, 5vw, 64px) 38px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0f766e, #1d4ed8 42%, #b7791f 76%, #b45309);
+    }
+
+    header h1 {
+      max-width: 1120px;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      max-width: 1120px;
+      color: #d7dde8;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      color: #e9f2ff;
+      background: rgba(255,255,255,0.07);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #34d399;
+      box-shadow: 0 0 0 4px rgba(52,211,153,0.15);
+    }
+
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 1120px;
+      margin-top: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 1120px;
+      margin-top: 16px;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .hero-action.primary-action {
+      background: #ffffff;
+      color: #182235;
+      border-color: #ffffff;
+    }
+
+    .hero-chip {
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 8px;
+      padding: 11px 12px;
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      min-height: 72px;
+    }
+
+    .hero-chip span {
+      display: block;
+      color: #aab8cc;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .hero-chip strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    main {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding-top: 24px;
+    }
+
+    .card {
+      border-color: rgba(17, 24, 39, 0.10);
+      box-shadow: var(--pro-shadow);
+      background: rgba(255,255,255,0.97);
+    }
+
+    .top-grid {
+      gap: 14px;
+    }
+
+    .metric {
+      position: relative;
+      overflow: hidden;
+      padding: 18px 18px 17px;
+      min-height: 124px;
+      box-shadow: var(--pro-subtle-shadow);
+    }
+
+    .metric::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--pro-teal);
+    }
+
+    .metric:nth-child(2)::before { background: var(--pro-focus); }
+    .metric:nth-child(3)::before { background: var(--pro-gold); }
+    .metric:nth-child(4)::before { background: var(--pro-coral); }
+
+    .metric .label {
+      font-weight: 750;
+      letter-spacing: 0;
+      color: #667085;
+    }
+
+    .metric .value {
+      color: #101828;
+      font-size: 30px;
+      font-weight: 850;
+    }
+
+    .metric .note {
+      line-height: 1.5;
+    }
+
+    section.card {
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .section-head {
+      align-items: center;
+      padding: 20px 22px 0;
+    }
+
+    h2 {
+      font-size: 21px;
+      font-weight: 850;
+      color: #101828;
+    }
+
+    .section-subtitle {
+      max-width: 980px;
+      line-height: 1.55;
+    }
+
+    .body {
+      padding: 20px 22px 22px;
+    }
+
+    .strategy {
+      gap: 14px;
+    }
+
+    .band {
+      position: relative;
+      border-color: #e1e6ef;
+      background: #ffffff;
+      box-shadow: var(--pro-subtle-shadow);
+      padding: 16px 15px;
+    }
+
+    .band::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 0;
+      height: 3px;
+      border-radius: 0 0 999px 999px;
+      background: #cfd8e6;
+    }
+
+    .band:nth-child(1)::after { background: #f97316; }
+    .band:nth-child(2)::after { background: #2563eb; }
+    .band:nth-child(3)::after { background: #16a34a; }
+    .band:nth-child(4)::after { background: #d97706; }
+
+    .tag, .nature-tag {
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.03);
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      gap: 12px;
+      padding: 15px 22px;
+      background: rgba(248,250,252,0.96);
+      border-top: 1px solid rgba(215,221,231,0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    input[type="search"], select {
+      min-height: 42px;
+      border-color: #cfd7e6;
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(16, 24, 40, 0.03);
+      font-size: 14px;
+    }
+
+    input[type="search"]:focus, select:focus, button:focus {
+      outline: 3px solid rgba(29, 78, 216, 0.18);
+      border-color: var(--pro-focus);
+    }
+
+    button {
+      min-height: 42px;
+      border-radius: 8px;
+      border-color: #c2ccdc;
+      background: #fff;
+      box-shadow: var(--pro-subtle-shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: #94a3b8;
+      box-shadow: 0 12px 26px rgba(24, 34, 53, 0.10);
+    }
+
+    button.primary {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .pro-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+      color: #667085;
+      font-size: 12px;
+    }
+
+    .jump-anchor {
+      display: block;
+      height: 1px;
+      scroll-margin-top: 84px;
+    }
+
+    .table-wrap {
+      max-height: 70vh;
+      border-top-color: var(--pro-line);
+      background: #fff;
+    }
+
+    table {
+      min-width: 1260px;
+    }
+
+    th {
+      background: #edf2f7;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 12px 11px;
+      border-bottom: 1px solid #cfd8e6;
+    }
+
+    td {
+      padding: 11px;
+      border-bottom-color: #e8edf4;
+      line-height: 1.5;
+    }
+
+    tbody tr:hover {
+      background: #f4f8ff;
+    }
+
+    tbody tr.selected-row {
+      background: #e8f1ff;
+      box-shadow: inset 5px 0 0 #1d4ed8;
+    }
+
+    .row-index {
+      color: #1f2937;
+      font-size: 14px;
+    }
+
+    .school-select {
+      width: 280px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .replacement-note {
+      color: #7a8598;
+    }
+
+    .detail-layout {
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    }
+
+    .detail-box {
+      border-color: #dce3ee;
+      background: #fbfcfe;
+      box-shadow: var(--pro-subtle-shadow);
+    }
+
+    .detail-box h3 {
+      font-size: 19px;
+      font-weight: 850;
+      color: #101828;
+    }
+
+    .detail-box p {
+      line-height: 1.65;
+    }
+
+    .list {
+      gap: 10px;
+    }
+
+    .list li {
+      border-color: #dce3ee;
+      background: #fbfcfe;
+      box-shadow: var(--pro-subtle-shadow);
+      line-height: 1.65;
+    }
+
+    .sources .list li {
+      box-shadow: none;
+      background: #fff;
+    }
+
+    @media (max-width: 920px) {
+      .hero-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        background: #f5f7fa;
+      }
+
+      header {
+        padding: 24px 16px 28px;
+      }
+
+      header h1 {
+        font-size: 27px;
+        line-height: 1.2;
+      }
+
+      header p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .hero-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .hero-chip {
+        min-height: 66px;
+        padding: 10px;
+      }
+
+      .hero-chip strong {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .hero-action {
+        min-height: 42px;
+        padding: 0 10px;
+        font-size: 13px;
+      }
+
+      main {
+        padding: 14px 10px 34px;
+      }
+
+      .top-grid {
+        gap: 10px;
+      }
+
+      .metric {
+        min-height: auto;
+        padding: 14px 14px 14px 16px;
+      }
+
+      .metric .value {
+        font-size: 25px;
+      }
+
+      .section-head {
+        padding: 17px 15px 0;
+      }
+
+      .body {
+        padding: 15px;
+      }
+
+      .toolbar {
+        position: static;
+        padding: 13px 15px;
+      }
+
+      input[type="search"], select, button {
+        min-height: 44px;
+        font-size: 16px;
+      }
+
+      .mobile-plan {
+        gap: 12px;
+        padding: 12px;
+        background: #f7f9fc;
+      }
+
+      .mobile-item {
+        border-color: #dce3ee;
+        border-radius: 8px;
+        padding: 13px;
+        box-shadow: var(--pro-subtle-shadow);
+      }
+
+      .mobile-item.selected-row {
+        background: #e8f1ff;
+        border-color: #8fb3ff;
+        box-shadow: inset 5px 0 0 #1d4ed8, var(--pro-subtle-shadow);
+      }
+
+      .mobile-item-head {
+        margin-bottom: 9px;
+      }
+
+      .mobile-index {
+        color: #101828;
+        font-size: 15px;
+      }
+
+      .mobile-meta {
+        gap: 8px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .school-select {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .pro-legend {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-strip, .pro-legend {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Executive visual refresh */
+    :root {
+      --canvas: #f3f5f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --ink: #101828;
+      --ink-2: #344054;
+      --ink-3: #667085;
+      --rule: #d8e0eb;
+      --navy-900: #111827;
+      --navy-800: #1f2937;
+      --teal-700: #0f766e;
+      --teal-50: #eaf8f6;
+      --blue-700: #1d4ed8;
+      --blue-50: #eef4ff;
+      --gold-700: #a16207;
+      --gold-50: #fff7e6;
+      --coral-700: #c2410c;
+      --coral-50: #fff3ed;
+      --violet-700: #6d28d9;
+      --violet-50: #f4f0ff;
+      --shadow-deep: 0 22px 54px rgba(16, 24, 40, 0.12);
+      --shadow-soft: 0 10px 28px rgba(16, 24, 40, 0.08);
+      --shadow-hairline: 0 1px 0 rgba(16, 24, 40, 0.04);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--canvas);
+    }
+
+    body {
+      background:
+        linear-gradient(90deg, rgba(15, 118, 110, 0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(29, 78, 216, 0.04) 1px, transparent 1px),
+        linear-gradient(180deg, #eef3f8 0, #f6f8fb 340px, #f7f8fb 100%);
+      background-size: 44px 44px, 44px 44px, auto;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    header {
+      isolation: isolate;
+      min-height: 390px;
+      padding: 38px clamp(18px, 5vw, 72px) 42px;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.34), transparent 34%),
+        linear-gradient(115deg, #101828 0%, #172033 46%, #243044 100%);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.78), transparent 92%);
+    }
+
+    header::after {
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal-700), var(--blue-700) 44%, var(--gold-700) 74%, var(--coral-700));
+      box-shadow: 0 -18px 50px rgba(15, 118, 110, 0.16);
+    }
+
+    header h1,
+    header p,
+    .hero-strip,
+    .hero-actions,
+    .hero-kicker {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      max-width: 980px;
+      font-size: 44px;
+      line-height: 1.12;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    header p {
+      max-width: 1040px;
+      color: rgba(236, 242, 250, 0.88);
+      font-size: 16px;
+      line-height: 1.82;
+    }
+
+    .hero-kicker {
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.09);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .hero-strip {
+      margin-top: 24px;
+      gap: 12px;
+    }
+
+    .hero-chip {
+      display: grid;
+      align-content: center;
+      min-height: 86px;
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.09);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 18px 38px rgba(0,0,0,0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-chip span {
+      color: rgba(223, 231, 244, 0.72);
+      font-weight: 700;
+    }
+
+    .hero-chip strong {
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+    }
+
+    .hero-action {
+      gap: 8px;
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+      transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+    }
+
+    .hero-action::after {
+      content: ">";
+      font-weight: 900;
+      opacity: 0.72;
+    }
+
+    .hero-action:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.36);
+      background: rgba(255,255,255,0.13);
+    }
+
+    .hero-action.primary-action {
+      color: #111827;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+    }
+
+    main {
+      max-width: 1500px;
+      margin-top: -42px;
+      padding-bottom: 56px;
+    }
+
+    .card {
+      border: 1px solid rgba(17, 24, 39, 0.10);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow-deep);
+      backdrop-filter: blur(8px);
+    }
+
+    .top-grid {
+      position: relative;
+      z-index: 3;
+    }
+
+    .metric {
+      min-height: 132px;
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric::after {
+      content: "0" counter(metric);
+      position: absolute;
+      right: 16px;
+      top: 14px;
+      color: rgba(16, 24, 40, 0.08);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .top-grid {
+      counter-reset: metric;
+    }
+
+    .metric {
+      counter-increment: metric;
+    }
+
+    .metric .label {
+      color: var(--ink-3);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .metric .value {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 32px;
+      letter-spacing: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric .note {
+      max-width: 260px;
+      color: var(--ink-3);
+      font-size: 13px;
+    }
+
+    section.card {
+      margin-top: 22px;
+    }
+
+    main {
+      counter-reset: section;
+    }
+
+    section.card .section-head {
+      position: relative;
+      padding: 22px 24px 0;
+    }
+
+    section.card .section-head h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    section.card {
+      counter-increment: section;
+    }
+
+    section.card .section-head h2::before {
+      content: counter(section, decimal-leading-zero);
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 28px;
+      border: 1px solid rgba(15, 118, 110, 0.18);
+      border-radius: 8px;
+      color: var(--teal-700);
+      background: var(--teal-50);
+      font-size: 13px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .section-subtitle {
+      margin-top: 8px;
+      color: var(--ink-3);
+      font-size: 14px;
+    }
+
+    .body {
+      padding: 22px 24px 24px;
+    }
+
+    .strategy {
+      grid-template-columns: repeat(4, minmax(190px, 1fr));
+    }
+
+    .band {
+      min-height: 164px;
+      padding: 18px 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.96));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .band strong {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .band p {
+      margin-top: 12px;
+      color: var(--ink-2);
+      line-height: 1.68;
+    }
+
+    .tag,
+    .nature-tag {
+      min-height: 24px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tag-rush { color: var(--coral-700); background: var(--coral-50); }
+    .tag-stable { color: var(--blue-700); background: var(--blue-50); }
+    .tag-safe { color: #15803d; background: #edfdf3; }
+    .tag-floor { color: var(--gold-700); background: var(--gold-50); }
+    .nature-public { color: #15803d; background: #edfdf3; }
+    .nature-voc-bachelor { color: var(--blue-700); background: var(--blue-50); }
+    .nature-private { color: var(--violet-700); background: var(--violet-50); }
+    .nature-vocational { color: var(--gold-700); background: var(--gold-50); }
+
+    .toolbar {
+      top: 0;
+      padding: 16px 24px;
+      background: rgba(248,250,252,0.94);
+      box-shadow: 0 12px 28px rgba(16, 24, 40, 0.07);
+    }
+
+    input[type="search"],
+    select {
+      min-height: 44px;
+      border-color: #cfd8e6;
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    input[type="search"] {
+      padding-left: 14px;
+    }
+
+    button,
+    .hero-action {
+      user-select: none;
+    }
+
+    button {
+      min-height: 44px;
+      padding-inline: 16px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    button.primary {
+      background: linear-gradient(180deg, #2563eb, #1d4ed8);
+      border-color: #1d4ed8;
+      box-shadow: 0 14px 28px rgba(29, 78, 216, 0.22);
+    }
+
+    .pro-legend {
+      padding-top: 2px;
+      color: var(--ink-3);
+    }
+
+    .pro-legend > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      padding: 2px 8px 2px 2px;
+      border: 1px solid #e4e9f1;
+      border-radius: 999px;
+      background: #fff;
+    }
+
+    .table-wrap {
+      border-top: 1px solid var(--rule);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.84);
+    }
+
+    table {
+      min-width: 1320px;
+    }
+
+    th {
+      top: 0;
+      background:
+        linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+      color: #334155;
+      font-size: 12px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    th,
+    td {
+      border-right: 1px solid rgba(226, 232, 240, 0.72);
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    td {
+      background: rgba(255,255,255,0.98);
+      color: var(--ink-2);
+      font-size: 13px;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #fbfdff;
+    }
+
+    tbody tr:hover td {
+      background: #f3f8ff;
+    }
+
+    tbody tr.selected-row td {
+      background: #e8f1ff;
+    }
+
+    .row-index {
+      text-align: center;
+      color: #1f2937;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .school-select {
+      width: 300px;
+      max-width: 100%;
+      font-weight: 800;
+    }
+
+    .score-cell,
+    .risk {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-cell {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .risk {
+      color: #1f2937;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .reason {
+      min-width: 300px;
+      color: var(--ink-2);
+    }
+
+    .replacement-note,
+    .mini,
+    .footnote {
+      color: var(--ink-3);
+    }
+
+    .detail-layout {
+      gap: 16px;
+    }
+
+    .detail-box {
+      padding: 18px;
+      background:
+        linear-gradient(180deg, #ffffff, #f9fbfe);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .detail-box h3 {
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .detail-box p {
+      color: var(--ink-2);
+    }
+
+    .list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .sources .list {
+      grid-template-columns: 1fr;
+    }
+
+    .list li {
+      position: relative;
+      padding: 13px 14px 13px 18px;
+      background: linear-gradient(180deg, #ffffff, #f9fbfe);
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 13px;
+      bottom: 13px;
+      width: 4px;
+      border-radius: 0 999px 999px 0;
+      background: var(--teal-700);
+      opacity: 0.82;
+    }
+
+    .sources .list li::before {
+      background: var(--blue-700);
+    }
+
+    .sources a {
+      color: var(--blue-700);
+      font-weight: 800;
+      text-underline-offset: 3px;
+    }
+
+    .empty-state {
+      color: var(--ink-3);
+      background: #fff;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1180px) {
+      .top-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .strategy,
+      .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      header {
+        min-height: auto;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      main {
+        margin-top: -26px;
+      }
+
+      .strategy,
+      .detail-layout,
+      .list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        background: #f5f7fa;
+      }
+
+      header {
+        padding: 24px 16px 30px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 14px;
+      }
+
+      main {
+        margin-top: -18px;
+        padding-inline: 10px;
+      }
+
+      .top-grid,
+      .hero-strip,
+      .hero-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-chip {
+        min-height: 70px;
+      }
+
+      .card {
+        box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08);
+      }
+
+      .metric {
+        min-height: 112px;
+      }
+
+      section.card .section-head {
+        padding: 18px 16px 0;
+      }
+
+      section.card .section-head h2 {
+        font-size: 20px;
+      }
+
+      .body {
+        padding: 16px;
+      }
+
+      .toolbar {
+        position: static;
+        padding: 14px 16px;
+        box-shadow: none;
+      }
+
+      .mobile-plan {
+        background: #f7f9fc;
+      }
+
+      .mobile-item {
+        background: linear-gradient(180deg, #ffffff, #fbfdff);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .mobile-item-head {
+        align-items: center;
+      }
+
+      .mobile-index {
+        font-weight: 900;
+      }
+
+      .mobile-meta {
+        margin-top: 12px;
+      }
+
+      .mobile-meta > div {
+        padding-top: 8px;
+        border-top: 1px solid #edf1f7;
+      }
+
+      .pro-legend {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Full-width refinement: keep dense content readable without horizontal dragging */
+    :root {
+      --page-pad: clamp(28px, 3.2vw, 64px);
+      --clean-bg: #f5f7fb;
+      --clean-line: #dbe3ef;
+      --clean-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    body {
+      background: var(--clean-bg);
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 0;
+      padding: 28px var(--page-pad) 30px;
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.94)),
+        linear-gradient(90deg, rgba(15, 118, 110, 0.28), rgba(37, 99, 235, 0.16));
+      border-bottom: 4px solid #0f766e;
+    }
+
+    header::before {
+      opacity: 0.38;
+    }
+
+    header::after {
+      display: none;
+    }
+
+    header h1,
+    header p,
+    .hero-strip,
+    .hero-actions,
+    main {
+      width: 100%;
+      max-width: none;
+    }
+
+    header h1 {
+      max-width: 1280px;
+      font-size: clamp(34px, 3.2vw, 56px);
+    }
+
+    header p {
+      max-width: 1320px;
+      font-size: 15px;
+      line-height: 1.78;
+    }
+
+    .hero-strip {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 1320px;
+    }
+
+    .hero-chip {
+      min-height: 78px;
+      box-shadow: none;
+    }
+
+    .hero-actions {
+      max-width: 1320px;
+    }
+
+    main {
+      margin: 0;
+      padding: 22px var(--page-pad) 56px;
+    }
+
+    .top-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      min-height: 118px;
+      box-shadow: var(--clean-shadow);
+    }
+
+    .card {
+      box-shadow: var(--clean-shadow);
+      border-color: var(--clean-line);
+      background: #fff;
+    }
+
+    section.card {
+      margin-top: 22px;
+    }
+
+    .strategy {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .band {
+      min-height: 138px;
+      box-shadow: none;
+      background: #fff;
+    }
+
+    .toolbar {
+      position: static;
+      box-shadow: none;
+      background: #f8fafc;
+    }
+
+    .table-wrap {
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: none;
+    }
+
+    table {
+      min-width: 0;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      padding: 10px 8px;
+      line-height: 1.45;
+    }
+
+    th {
+      font-size: 11px;
+      vertical-align: top;
+    }
+
+    td {
+      font-size: 12px;
+      vertical-align: top;
+    }
+
+    th:nth-child(1), td:nth-child(1) { width: 42px; }
+    th:nth-child(2), td:nth-child(2) { width: 48px; }
+    th:nth-child(3), td:nth-child(3) { width: 16%; }
+    th:nth-child(4), td:nth-child(4) { width: 7%; }
+    th:nth-child(5), td:nth-child(5) { width: 6%; }
+    th:nth-child(6), td:nth-child(6) { width: 8%; }
+    th:nth-child(7), td:nth-child(7) { width: 8%; }
+    th:nth-child(8), td:nth-child(8) { width: 58px; }
+    th:nth-child(9), td:nth-child(9) { width: 11%; }
+    th:nth-child(10), td:nth-child(10) { width: 14%; }
+    th:nth-child(11), td:nth-child(11) { width: 14%; }
+    th:nth-child(12), td:nth-child(12) { width: 11%; }
+
+    .school-select {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .reason {
+      min-width: 0;
+    }
+
+    .replacement-note {
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    .nature-tag,
+    .tag {
+      padding-inline: 7px;
+      white-space: normal;
+    }
+
+    .detail-layout {
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    }
+
+    @media (max-width: 1280px) {
+      :root {
+        --page-pad: 22px;
+      }
+
+      .top-grid,
+      .strategy {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      th,
+      td {
+        font-size: 11.5px;
+        padding: 9px 6px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero-strip,
+      .top-grid,
+      .strategy,
+      .detail-layout,
+      .list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --page-pad: 12px;
+      }
+
+      header {
+        padding: 22px 16px 24px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      main {
+        padding: 14px 10px 36px;
+      }
+
+      .table-wrap {
+        display: none;
+      }
+
+      .mobile-plan {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero-kicker">专业版志愿决策报告</div>
+    <h1>李尚泽同学 2026 甘肃历史类 411 分志愿填报模型</h1>
+    <p>考生画像：李尚泽同学，甘肃省，历史类，总分 411，位次 23923。本文件以位次为主、分差为辅，按“冲、稳、保、垫”构建 45 个院校专业组草表。由于 2025 年甘肃官方完整投档线需登录官方平台查询，表内第三方线索均标注为“待核验”。</p>
+    <div class="hero-strip" aria-label="核心填报指标">
+      <div class="hero-chip"><span>考生定位</span><strong>历史类 411 分</strong></div>
+      <div class="hero-chip"><span>全省位次</span><strong>23923 名</strong></div>
+      <div class="hero-chip"><span>策略重心</span><strong>保本科优先</strong></div>
+      <div class="hero-chip"><span>志愿结构</span><strong>45 个院校专业组</strong></div>
+    </div>
+    <nav class="hero-actions" aria-label="页面快捷导航">
+      <a class="hero-action primary-action" href="#planListAnchor">查看 45 个志愿表</a>
+      <a class="hero-action" href="#detailSection">查看选中项分析</a>
+      <a class="hero-action" href="#employmentSection">就业方向模型</a>
+      <a class="hero-action" href="#checklistSection">填报核验清单</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid top-grid">
+      <div class="card metric">
+        <div class="label">2026 分数与位次</div>
+        <div class="value">411 / 23923</div>
+        <div class="note">历史类，本科线上 6 分</div>
+      </div>
+      <div class="card metric">
+        <div class="label">2026 历史类本科线</div>
+        <div class="value">405</div>
+        <div class="note">甘肃普通类本科批控制线</div>
+      </div>
+      <div class="card metric">
+        <div class="label">2025 等位参考</div>
+        <div class="value">约 418</div>
+        <div class="note">按 23923 位次接近 2025 年 418 分段估算</div>
+      </div>
+      <div class="card metric">
+        <div class="label">核心原则</div>
+        <div class="value">保本科</div>
+        <div class="note">学校名气和城市偏好让位于录取确定性</div>
+      </div>
+    </div>
+
+    <section class="card" id="planSection">
+      <div class="section-head">
+        <div>
+          <h2>填报策略</h2>
+          <div class="section-subtitle">按 45 个院校专业组设计，前段保留弹性，中后段压实录取概率。</div>
+        </div>
+      </div>
+      <div class="body strategy">
+        <div class="band">
+          <strong><span class="tag tag-rush">冲</span> 6-8 个</strong>
+          <p>参考 2025 最低位次约 22000-23800，或等位分 421-425。只冲可接受的专业组，避免热门城市热门专业。</p>
+        </div>
+        <div class="band">
+          <strong><span class="tag tag-stable">稳</span> 18-22 个</strong>
+          <p>参考最低位次约 23800-25500，或等位分 416-419。这是主战场，优先专业可接受、学费能承受的本科。</p>
+        </div>
+        <div class="band">
+          <strong><span class="tag tag-safe">保</span> 12-15 个</strong>
+          <p>参考最低位次 25500 以后，或等位分 410-415。不要嫌保底学校“不好看”，它们负责防滑档。</p>
+        </div>
+        <div class="band">
+          <strong><span class="tag tag-floor">垫</span> 3-5 个</strong>
+          <p>职业本科、公办高职优质专业、低位次民办本科。若家庭更重视本科身份，可减少专科垫底数量。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="detailSection">
+      <div class="section-head">
+        <div>
+          <h2>45 个志愿草表</h2>
+          <div class="section-subtitle">每一行下拉均包含当前预填志愿和该志愿位专属备选；备选学校整体不重复，用于直接替换当前行。</div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input id="searchBox" type="search" placeholder="搜索学校、地区、专业关键词" />
+        <select id="bandFilter" aria-label="筛选层级">
+          <option value="all">全部层级</option>
+          <option value="冲">只看冲</option>
+          <option value="稳">只看稳</option>
+          <option value="保">只看保</option>
+          <option value="垫">只看垫</option>
+        </select>
+        <button id="resetBtn">恢复预填</button>
+        <button class="primary" id="exportBtn">导出 CSV</button>
+        <div class="pro-legend" aria-label="颜色图例">
+          <span><span class="tag tag-rush">冲</span> 前段试探</span>
+          <span><span class="tag tag-stable">稳</span> 主力区间</span>
+          <span><span class="tag tag-safe">保</span> 防滑档</span>
+          <span><span class="nature-tag nature-public">公办本科</span> 性质标签同步着色</span>
+        </div>
+      </div>
+      <span class="jump-anchor" id="planListAnchor" aria-hidden="true"></span>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>层级</th>
+              <th>院校专业组候选</th>
+              <th>性质</th>
+              <th>地区</th>
+              <th>2025 参考最低分/位次</th>
+              <th>学费/年</th>
+              <th>风险</th>
+              <th>建议专业方向</th>
+              <th>就业方向/预测</th>
+              <th>自动理由</th>
+              <th>核验动作</th>
+            </tr>
+          </thead>
+          <tbody id="planBody"></tbody>
+        </table>
+      </div>
+      <div class="mobile-plan" id="mobilePlan"></div>
+    </section>
+
+    <section class="card" id="employmentSection">
+      <div class="section-head">
+        <div>
+          <h2>选中项分析</h2>
+          <div class="section-subtitle">点击表格行，或切换下拉选项后自动更新。</div>
+        </div>
+      </div>
+      <div class="body detail-layout">
+        <div class="detail-box" id="detailBox"></div>
+        <div class="detail-box">
+          <h3>录取概率评分规则</h3>
+          <p><strong>总分 = 录取概率 40 + 专业适配 25 + 学校/公办属性 15 + 学费城市 10 + 升学就业 10。</strong></p>
+          <p>位次优先于分数：今年 411 分只高本科线 6 分，但 23923 位次约等于 2025 年 418 分附近，所以应按“等位分 418”建池，再按专业热度和计划变化做折减。</p>
+          <p>若某专业组 2026 计划数明显减少、专业更热门、城市更热，应把它从“稳”降为“冲”；若计划增加或专业冷门，可从“保”上调为“稳”。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="checklistSection">
+      <div class="section-head">
+        <div>
+          <h2>就业方向模型</h2>
+          <div class="section-subtitle">历史类 411 分段不宜只追学校名，专业的就业路径要足够清楚。</div>
+        </div>
+      </div>
+      <div class="body">
+        <ul class="list">
+          <li><strong>护理、康复、助产：</strong>岗位路径清楚，医院、基层医疗、养老康养、健康管理都有需求；缺点是学习强度和职业辛苦度高，需核验体检限制。</li>
+          <li><strong>会计、财务、审计：</strong>就业面广，企业财务、事务所、税务服务、公考均可；缺点是竞争大，最好叠加初级会计、计算机、数据分析能力。</li>
+          <li><strong>汉语言、学前/小学教育：</strong>适合考编、教培、文秘、新媒体、公务员方向；缺点是考编竞争强，城市和学校层级会影响机会。</li>
+          <li><strong>法学：</strong>上限较高，公考、法考、基层法律服务、企业合规均可；缺点是本科层次一般时更依赖法考、考研或公考。</li>
+          <li><strong>外语、商务英语：</strong>单一外语就业承压，最好和跨境电商、国际贸易、教育、运营结合；不建议没有兴趣和基础时盲选。</li>
+          <li><strong>网络与新媒体、数字媒体、电商、数字经济：</strong>岗位灵活，适合内容运营、电商运营、短视频、私域、数据助理；缺点是平台变化快，实习和作品集很重要。</li>
+          <li><strong>旅游、酒店、泛工商管理：</strong>门槛低、流动性高，除非学校城市资源强或本人兴趣明确，否则优先级应低于财务、护理、教育、新媒体等方向。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>正式填报前核验清单</h2>
+          <div class="section-subtitle">这几项比“学校名字好不好听”更能决定是否滑档、退档或后悔。</div>
+        </div>
+      </div>
+      <div class="body">
+        <ul class="list">
+          <li>逐个核对《2026 甘肃省普通高校招生专业目录》：院校专业组代码、招生计划数、学费、学制、校区、再选科目要求。</li>
+          <li>登录甘肃省教育考试院官方平台查询 2025 年对应院校专业组最低投档分和位次，不要只依赖第三方网页。</li>
+          <li>把每个专业组内 6 个专业都检查一遍：若有完全不能接受的专业，慎选“服从调剂”。</li>
+          <li>优先保住本科批投档：第 20 个之后不要继续堆“擦线冲刺校”，第 35 个之后必须以保底为核心。</li>
+          <li>民办本科重点核实总费用：学费、住宿费、交通成本、转专业政策、考研和就业数据。</li>
+          <li>若家庭能接受“公办高职强专业”，可把末端 3-5 个志愿设置为就业导向型公办高职，作为极端兜底。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card sources">
+      <div class="section-head">
+        <div>
+          <h2>数据来源与口径说明</h2>
+          <div class="section-subtitle">本文件是决策模型，不替代最终官方志愿填报系统。</div>
+        </div>
+      </div>
+      <div class="body">
+        <ul class="list">
+          <li>2026 甘肃普通类本科线：历史类 405。来源：<a href="https://www.ganseea.cn/index.php?a=index&aid=1904&c=View&m=home" target="_blank">甘肃省教育考试院</a>、<a href="https://gansu.gscn.com.cn/system/2026/06/25/013516092.shtml" target="_blank">中国甘肃网转载</a>。</li>
+          <li>2026 甘肃本科批普通类志愿数量：45 个院校专业组，每组 6 个专业和 1 个服从调剂。来源：<a href="https://www.ganseea.cn/gaokaogaozhao/1884.html" target="_blank">甘肃省教育考试院招生工作通知</a>。</li>
+          <li>2025 甘肃历史类本科线 412，2024 甘肃历史类本科线 421。来源：<a href="https://gaokao.eol.cn/gan_su/dongtai/202506/t20250625_2676899.shtml" target="_blank">中国教育在线 2025 线</a>、<a href="https://www.ganseea.cn/gaokaogaozhao/1157.html" target="_blank">甘肃省教育考试院 2024 分段表/线</a>。</li>
+          <li>2025 年甘肃普通高校招生录取投档最低分查询需凭考生信息登录官方平台，公开网页不再完整展示。来源：<a href="https://www.ganseea.cn/shouyegonggao/1544.html" target="_blank">甘肃省教育考试院投档最低分查询公告</a>。</li>
+          <li>表内候选学校、2025 参考分位和学费区间来自第三方公开聚合页面线索、学校常见收费区间与同位次推断，必须在正式填报前用官方平台和 2026 招生章程核验。若官方查询结果与本表不同，以官方为准。</li>
+        </ul>
+        <div class="footnote">制作日期：2026-06-25。适用对象：甘肃历史类 411 分、23923 位次考生。</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const candidates = [
+      {
+        id: "gs-lzshzyjsdx", name: "兰州石化职业技术大学", band: "冲", nature: "公办职业本科", region: "甘肃兰州", ref: "约 421-425 / 待核验",
+        risk: "中高", majors: "现代服务管理、电子商务、数字媒体、应用化工管理相关",
+        intro: "省内公办职业本科，应用型和产业导向较强。对线边考生来说，公办属性和本地认可度是主要价值。",
+        analysis: "如果对应历史类专业组仍在 421-425 区间，23923 位次属于有机会但不能依赖的冲刺项。适合放在前 3-8 位，不建议作为稳妥志愿。",
+        reason: "公办+省内+职业本科，若专业可接受，值得前段冲。关键看 2026 计划数和专业组是否扩招。",
+        verify: "核验专业组代码、是否本科批、具体专业和 2025 官方最低位次。"
+      },
+      {
+        id: "gs-gslyzyjsdx", name: "甘肃林业职业技术大学", band: "冲", nature: "公办职业本科", region: "甘肃天水", ref: "约 421-425 / 待核验",
+        risk: "中高", majors: "园林、生态、现代文秘、财务、电商、旅游管理",
+        intro: "省内公办职业本科，林业生态和应用型专业特色明显。若能接受天水和职业本科定位，是低分段公办本科的重要选择。",
+        analysis: "对 411 分考生属于前段冲刺或偏冲稳之间，是否可进取决于历史类计划、专业热度和投档线波动。",
+        reason: "公办本科身份的性价比较高，但不能把它当保底；专业接受度要先过关。",
+        verify: "核验 2026 历史类招生专业、校区、学费、是否有不接受调剂专业。"
+      },
+      {
+        id: "gs-gsmzsfx", name: "甘肃民族师范学院（专项/预科/边缘组）", band: "冲", nature: "公办本科", region: "甘肃合作", ref: "约 423-426 / 待核验",
+        risk: "高", majors: "学前教育、小学教育、汉语言、思想政治教育、民族类预科",
+        intro: "省内公办师范院校，师范类专业和区域就业有一定稳定性。专项、预科或冷门组可能给线边考生留下机会。",
+        analysis: "普通热门师范专业通常竞争不低，本表只建议关注低热度或特殊类型专业组。",
+        reason: "公办师范吸引力强，但风险也高，适合冲，不适合作为稳。",
+        verify: "确认是否符合专项、预科、民族、户籍等资格条件。"
+      },
+      {
+        id: "hb-hbbfxy", name: "河北北方学院", band: "冲", nature: "公办本科", region: "河北张家口", ref: "约 424-426 / 待核验",
+        risk: "高", majors: "文史、护理、管理、外语相关边缘组",
+        intro: "地方公办本科，医学、师范、农学等复合背景。跨省公办本科对低分段考生有吸引力。",
+        analysis: "若历史类计划少，最低位次容易抬升。只建议填可接受冷门组，不能过度乐观。",
+        reason: "公办本科可冲，但计划小、波动大，适合作为前段梦想项。",
+        verify: "核验甘肃历史类是否有本科批计划和具体组内专业。"
+      },
+      {
+        id: "tj-bhwsxy", name: "天津外国语大学滨海外事学院", band: "冲", nature: "民办本科", region: "天津", ref: "约 422-425 / 待核验",
+        risk: "中高", majors: "英语、商务英语、国际经济与贸易、法学、汉语国际教育",
+        intro: "天津区域的语言类独立学院，城市和语言特色是卖点，学费和专业就业需重点评估。",
+        analysis: "如果语言类不是强兴趣，不建议为了城市盲目冲。适合喜欢外语、能承受民办费用的考生。",
+        reason: "城市加分明显，但专业偏文科热门，需用位次核验后再决定顺序。",
+        verify: "核验学费、语种限制、单科要求和 2025 官方位次。"
+      },
+      {
+        id: "hb-hbdfxy", name: "河北东方学院", band: "冲", nature: "民办本科", region: "河北廊坊", ref: "约 421-424 / 待核验",
+        risk: "中高", majors: "护理、财务管理、审计、网络与新媒体、文物与博物馆学",
+        intro: "位于京津冀区域的民办本科，部分医学护理和管理类专业对就业更直接。",
+        analysis: "适合作为民办本科冲刺项。若学费压力大，应降低排序。",
+        reason: "区位不错、专业覆盖较广，但录取概率和费用都要核验。",
+        verify: "核验护理等专业是否招历史类、是否有体检限制。"
+      },
+      {
+        id: "sx-xbdxxdxy", name: "西北大学现代学院", band: "冲", nature: "民办本科", region: "陕西西安", ref: "约 424-425 / 待核验",
+        risk: "高", majors: "汉语言文学、网络与新媒体、财务、播音/艺术相关非艺类需核验",
+        intro: "西安民办本科，城市吸引力较强。校名辨识度有优势，但专业和费用更应优先考虑。",
+        analysis: "城市热度会抬高分数，411 分位次填报时只能放在前段冲。",
+        reason: "西安区位好，适合作为前段冲刺，不宜寄托录取主力。",
+        verify: "核验是否有普通历史类计划及学费。"
+      },
+      {
+        id: "hb-whswgc", name: "武汉生物工程学院", band: "冲", nature: "民办本科", region: "湖北武汉", ref: "约 421-424 / 待核验",
+        risk: "中高", majors: "汉语言、财务、护理、健康服务、数字媒体",
+        intro: "武汉民办本科，生物医药和应用型专业标签较明显，城市资源较好。",
+        analysis: "若能接受民办和武汉生活成本，可以作为前段冲稳之间的选择。",
+        reason: "专业应用性较强，但热门城市和民办费用会带来权衡。",
+        verify: "核验历史类可报专业和是否含高收费专业。"
+      },
+      {
+        id: "js-wxthxy", name: "无锡太湖学院", band: "稳", nature: "民办本科", region: "江苏无锡", ref: "约 418 / 23900 左右线索",
+        risk: "中", majors: "会计、财务管理、审计、法学、汉语言、护理",
+        intro: "长三角民办本科，地理位置和就业市场较好，但费用通常高于省内院校。",
+        analysis: "与考生等位分接近，是典型稳中带风险志愿。不要把它放太后，也不要当绝对保底。",
+        reason: "位次匹配度较高，城市和专业实用性不错，适合稳志愿前段。",
+        verify: "核验 2025 官方专业组位次、学费、住宿和校区。"
+      },
+      {
+        id: "gd-hnnydzj", name: "华南农业大学珠江学院", band: "稳", nature: "民办本科", region: "广东广州", ref: "约 418 / 23900 左右线索",
+        risk: "中", majors: "会计、财务、汉语言、传播、电商、设计管理相关",
+        intro: "广州民办本科，区位资源强，适合看重城市机会的家庭。费用和生活成本需重点核算。",
+        analysis: "分位较贴近，若 2026 招生计划稳定，可作为稳志愿；如果专业热度上升则需前移。",
+        reason: "广州城市红利明显，但费用和竞争都更高。",
+        verify: "核验学费、住宿费、专业组代码和是否高收费。"
+      },
+      {
+        id: "nx-nxlgxy", name: "宁夏理工学院", band: "稳", nature: "民办本科", region: "宁夏石嘴山", ref: "约 417-419 / 待核验",
+        risk: "中", majors: "会计、财务管理、电子商务、学前教育、汉语言",
+        intro: "西北区域民办本科，地域热度低于沿海城市，分数波动相对可控。",
+        analysis: "适合把本科身份放在第一位的考生，作为稳志愿中段较合适。",
+        reason: "地理热度适中，录取概率通常比热门城市民办更稳。",
+        verify: "核验招生计划和专业调剂范围。"
+      },
+      {
+        id: "cq-cqrwkj", name: "重庆人文科技学院", band: "稳", nature: "民办本科", region: "重庆", ref: "约 416-419 / 待核验",
+        risk: "中", majors: "汉语言文学、法学、会计、护理、思想政治教育",
+        intro: "重庆民办本科，文科类和师范类专业覆盖较多，城市吸引力较强。",
+        analysis: "专业适配度较好，但重庆区位可能带来竞争。适合稳志愿中前段。",
+        reason: "文史类专业选择多，适合历史类考生，但要避开过热专业组。",
+        verify: "核验法学、汉语言等热门专业组的实际位次。"
+      },
+      {
+        id: "hb-hbwgxy", name: "河北外国语学院", band: "稳", nature: "民办本科", region: "河北石家庄", ref: "约 416-419 / 待核验",
+        risk: "中", majors: "外语、汉语国际教育、护理、财务、审计",
+        intro: "语言类民办本科，专业特色明显。适合外语兴趣明确或希望走跨境、电商、教育方向的考生。",
+        analysis: "语言类就业分化较大，专业兴趣和能力要比校名更重要。",
+        reason: "位次可能匹配，但外语类不宜盲选，需看个人偏好。",
+        verify: "核验语种要求、口试要求和单科限制。"
+      },
+      {
+        id: "ha-zzgsxy", name: "郑州工商学院", band: "稳", nature: "民办本科", region: "河南郑州", ref: "约 416-419 / 待核验",
+        risk: "中", majors: "财务管理、会计、审计、法学、汉语言",
+        intro: "郑州民办本科，管理、财经和文史类专业选择较多，交通区位尚可。",
+        analysis: "适合希望留在中西部大城市读本科的考生。作为稳志愿中段较合理。",
+        reason: "专业实用性相对不错，录取概率需按专业组核验。",
+        verify: "核验 2026 甘肃历史类计划数是否变化。"
+      },
+      {
+        id: "hb-hbwlgc", name: "湖北文理学院理工学院", band: "稳", nature: "民办本科", region: "湖北襄阳", ref: "约 416-418 / 待核验",
+        risk: "中", majors: "汉语言、法学、财务、投资学、学前教育",
+        intro: "地方民办本科，依托湖北文理学院办学背景，城市热度低于武汉。",
+        analysis: "城市热度较低，作为稳志愿较有意义，关键看专业组是否稳定。",
+        reason: "比热门城市民办更务实，适合追求本科确定性的中段选择。",
+        verify: "核验转专业政策和组内专业是否可接受。"
+      },
+      {
+        id: "zj-ndkxyjs", name: "宁波大学科学技术学院", band: "稳", nature: "民办本科", region: "浙江宁波", ref: "约 416-419 / 待核验",
+        risk: "中高", majors: "会计、财务、法学、汉语言、商务英语",
+        intro: "浙江民办本科，宁波产业和就业环境较好，费用与竞争需评估。",
+        analysis: "区位优势可能抬分，若官方位次接近 23923，应放在稳志愿前段或冲稳交界。",
+        reason: "城市和就业市场不错，但不能低估分数波动。",
+        verify: "核验是否有较高学费专业组。"
+      },
+      {
+        id: "js-njgypl", name: "南京工业大学浦江学院", band: "稳", nature: "民办本科", region: "江苏南京/溧水", ref: "约 416-419 / 待核验",
+        risk: "中高", majors: "财务管理、税收学、人力资源、酒店管理、市场营销",
+        intro: "江苏民办本科，南京都市圈区位有吸引力。管理类专业多，但也需警惕泛管理类就业分化。",
+        analysis: "适合看重长三角区域的考生，专业应优先选财务、税收等相对明确方向。",
+        reason: "城市加分强，位次若匹配可稳，但专业选择要精挑。",
+        verify: "核验校区、学费和专业组内是否有不想读的专业。"
+      },
+      {
+        id: "yn-kmykhy", name: "昆明医科大学海源学院", band: "稳", nature: "民办本科", region: "云南昆明", ref: "约 415-418 / 待核验",
+        risk: "中", majors: "护理学、助产、健康服务、应用心理",
+        intro: "医学类民办本科，护理和健康服务类方向就业路径相对明确。",
+        analysis: "若考生能接受医学护理类专业和学习强度，是历史类低分段较有实用性的选择。",
+        reason: "专业导向清晰，适合稳志愿中段，但体检限制要先核实。",
+        verify: "核验体检要求、色弱色盲限制、实习地点和学费。"
+      },
+      {
+        id: "js-jdcjxy", name: "集美大学诚毅学院", band: "稳", nature: "民办本科", region: "福建厦门", ref: "约 416-419 / 待核验",
+        risk: "中高", majors: "会计、财政、法学、汉语言、英语",
+        intro: "厦门民办本科，城市吸引力强，财经和文史类专业较常见。",
+        analysis: "厦门区位可能使分数偏高，适合稳中偏冲的位置。",
+        reason: "学校和城市都较有吸引力，但费用和竞争需要控制预期。",
+        verify: "核验 2025 甘肃官方位次和 2026 计划数。"
+      },
+      {
+        id: "sh-shsdxy", name: "上海杉达学院", band: "稳", nature: "民办本科", region: "上海", ref: "约 414-418 / 待核验",
+        risk: "中高", majors: "会计、财务、国际经济、网络与新媒体、护理",
+        intro: "上海民办本科，城市资源强，费用和生活成本也高。",
+        analysis: "如果家庭预算充足且希望去上海，可作为稳中偏冲；预算敏感则后移或删除。",
+        reason: "城市价值高，但性价比取决于专业和费用。",
+        verify: "核验学费、住宿、校区和中外合作/高收费标记。"
+      },
+      {
+        id: "tj-tjkjdx", name: "天津科技大学（边缘/高收费/特殊组）", band: "稳", nature: "公办本科", region: "天津", ref: "约 413-418 / 待核验",
+        risk: "中高", majors: "外语、管理、国际合作类需核验",
+        intro: "天津公办本科，学校层次明显优于大多数民办，但低分可进的通常是特殊或边缘专业组。",
+        analysis: "如果官方确认有 411-418 区间可报组，优先级可上调；否则不要盲填普通组。",
+        reason: "公办本科价值高，但此分段只能关注特殊机会。",
+        verify: "重点核验是否高收费、是否中外合作、是否本科批普通历史类。"
+      },
+      {
+        id: "qh-qhmzdx", name: "青海民族大学（边缘组）", band: "保", nature: "公办本科", region: "青海西宁", ref: "约 412-416 / 待核验",
+        risk: "中", majors: "民族学、社会工作、旅游管理、公共管理、预科",
+        intro: "西北公办本科，地域热度低于东部，边缘专业组可能更适合线边位次。",
+        analysis: "如果官方位次在 25000 附近，是很有价值的公办保稳项；若普通专业组分数较高，则前移为冲。",
+        reason: "公办属性强，地域热度相对可控，是必须核验的重点学校。",
+        verify: "确认是否有预科/民族限制和专业调剂范围。"
+      },
+      {
+        id: "gs-lzgsxy", name: "兰州工商学院", band: "保", nature: "民办本科", region: "甘肃兰州", ref: "约 411-415 / 待核验",
+        risk: "中低", majors: "会计、财务管理、审计、法学、工商管理",
+        intro: "省内民办本科，财经管理类专业较集中，离家近、生活成本可控。",
+        analysis: "适合作为保本科的重要选择。若家庭希望省内读书，应提高排序。",
+        reason: "本地民办本科，录取确定性和生活便利性更好。",
+        verify: "核验学费和专业组内是否有泛管理类调剂风险。"
+      },
+      {
+        id: "sx-xaoyxy", name: "西安欧亚学院", band: "保", nature: "民办本科", region: "陕西西安", ref: "约 411-415 / 待核验",
+        risk: "中", majors: "会计、财务、网络与新媒体、教育、电子商务",
+        intro: "西安民办本科，应用型和商科专业较多，城市资源优于省内多数民办。",
+        analysis: "城市热度会带来竞争，但对 23923 位次仍可作为保稳结合项。",
+        reason: "专业选择多、城市近，适合中后段保志愿。",
+        verify: "核验学费、住宿、专业组最低位次。"
+      },
+      {
+        id: "sd-sdycxy", name: "山东英才学院", band: "保", nature: "民办本科", region: "山东济南", ref: "约 410-414 / 待核验",
+        risk: "中低", majors: "护理、学前教育、财务、审计、康复治疗",
+        intro: "山东民办本科，护理、教育、管理类专业较多。",
+        analysis: "若目标是保本科，可以放在中后段。专业选择应偏向护理、教育、财务等路径明确方向。",
+        reason: "录取确定性相对更好，适合兜住本科批。",
+        verify: "核验护理类体检限制和学费。"
+      },
+      {
+        id: "zj-zjsrxy", name: "浙江树人学院", band: "保", nature: "民办本科", region: "浙江杭州/绍兴", ref: "约 410-414 / 待核验",
+        risk: "中", majors: "汉语言、财务、护理、社工、秘书学",
+        intro: "浙江民办本科，区位有一定吸引力，费用也需要重视。",
+        analysis: "如果 2025 官方位次确实在 25500 附近，可作为保志愿；若热门专业偏高，需前移。",
+        reason: "长三角机会较多，但预算敏感家庭需谨慎。",
+        verify: "核验校区、学费和专业组。"
+      },
+      {
+        id: "gx-lzgxy", name: "柳州工学院", band: "保", nature: "民办本科", region: "广西柳州", ref: "约 410-413 / 待核验",
+        risk: "中低", majors: "财务管理、英语、商务英语、物流管理、人力资源",
+        intro: "广西民办本科，地域热度较低，适合本科保底。",
+        analysis: "地理距离较远但分数压力相对小。适合家庭接受南方城市和民办费用时填报。",
+        reason: "作为保底本科，比继续冲热门城市更理性。",
+        verify: "核验具体专业和是否有不愿调剂专业。"
+      },
+      {
+        id: "zj-sxxy", name: "绍兴文理学院元培学院", band: "保", nature: "民办本科", region: "浙江绍兴", ref: "约 411-415 / 待核验",
+        risk: "中", majors: "会计、法学、汉语言、护理、国际商务",
+        intro: "浙江民办本科，城市环境较好，文管类专业可选。",
+        analysis: "适合作为保稳结合项。浙江区位导致波动不可忽视。",
+        reason: "专业适配度较好，但不应排在最后兜底。",
+        verify: "核验专业组实际位次和费用。"
+      },
+      {
+        id: "sd-xxxy", name: "山东协和学院", band: "保", nature: "民办本科", region: "山东济南", ref: "约 409-413 / 待核验",
+        risk: "中低", majors: "护理、助产、康复、学前教育、会计",
+        intro: "医学护理和应用型专业较多，适合明确就业导向的历史类考生。",
+        analysis: "若接受护理健康方向，保底价值较高；若只想读文科传统专业，需比较同类校。",
+        reason: "就业路径相对清晰，可作为后段保本科选择。",
+        verify: "核验体检限制、实习安排和学费。"
+      },
+      {
+        id: "sx-xafyx", name: "西安翻译学院", band: "保", nature: "民办本科", region: "陕西西安", ref: "约 409-413 / 待核验",
+        risk: "中", majors: "英语、翻译、汉语言、学前教育、财务",
+        intro: "西安民办本科，语言类特色明显，城市距离甘肃较近。",
+        analysis: "适合外语能力和兴趣明确的考生。若外语一般，优先考虑财务、教育类。",
+        reason: "区位便利，保底属性尚可，但专业选择要理性。",
+        verify: "核验语种、口试、单科要求。"
+      },
+      {
+        id: "sx-xapxxy", name: "西安培华学院", band: "保", nature: "民办本科", region: "陕西西安", ref: "约 410-414 / 待核验",
+        risk: "中", majors: "护理、学前教育、汉语言、会计、法学",
+        intro: "西安民办本科，护理、教育和文管类专业较多，离甘肃较近。",
+        analysis: "可作为中后段保稳项。若专业可接受，比远距离同档民办更方便。",
+        reason: "城市近、专业多，适合保本科。",
+        verify: "核验热门专业是否超过本位次。"
+      },
+      {
+        id: "gs-lzxxkjxy", name: "兰州信息科技学院", band: "保", nature: "民办本科", region: "甘肃兰州", ref: "约 408-413 / 待核验",
+        risk: "中低", majors: "财务管理、电子商务、人力资源、英语、物流",
+        intro: "省内民办本科，工科背景更强，历史类可选专业需具体核验。",
+        analysis: "如果重视省内和本科身份，是后段保底的重要选项。",
+        reason: "省内成本可控，录取稳定性应优于热门外省民办。",
+        verify: "核验历史类专业是否足够可接受。"
+      },
+      {
+        id: "gs-lzbwkj", name: "兰州博文科技学院", band: "保", nature: "民办本科", region: "甘肃兰州", ref: "约 408-413 / 待核验",
+        risk: "中低", majors: "会计、财务、英语、电子商务、交通运输管理相关",
+        intro: "省内民办本科，交通和工程类背景明显，历史类更多集中在文管方向。",
+        analysis: "后段保底价值较高，适合家庭希望留省内。",
+        reason: "省内民办，调剂和生活成本相对可控。",
+        verify: "核验组内专业和是否有校区差异。"
+      },
+      {
+        id: "hn-hnyyjs", name: "湖南应用技术学院", band: "保", nature: "民办本科", region: "湖南常德", ref: "约 408-413 / 待核验",
+        risk: "中低", majors: "财务、行政管理、电子商务、文化产业、园林经济相关",
+        intro: "湖南民办应用型本科，地域热度适中。",
+        analysis: "适合作为后段保底本科选择，专业以实用型为主。",
+        reason: "录取概率可能较稳，适合压实后段。",
+        verify: "核验学费、宿舍和交通成本。"
+      },
+      {
+        id: "fj-fzgsxy", name: "福州工商学院", band: "保", nature: "民办本科", region: "福建福州", ref: "约 408-412 / 待核验",
+        risk: "中低", majors: "会计、财务管理、人力资源、物流、英语",
+        intro: "福建民办本科，商科和管理类专业较多。",
+        analysis: "距离较远，适合愿意去东南沿海且能承受费用的家庭。",
+        reason: "保本科可用，但距离和费用需要家庭统一意见。",
+        verify: "核验学费、交通、专业组。"
+      },
+      {
+        id: "cq-cqydxy", name: "重庆移通学院", band: "保", nature: "民办本科", region: "重庆", ref: "约 408-413 / 待核验",
+        risk: "中", majors: "财务管理、工商管理、数字经济、网络与新媒体、外语",
+        intro: "重庆民办应用型本科，信息技术和商科方向较多。",
+        analysis: "重庆区位较好，若位次匹配可作为保稳结合。专业最好选数字经济、财务、传媒等较明确方向。",
+        reason: "城市和专业方向尚可，但热门专业会有波动。",
+        verify: "核验高收费专业和校区。"
+      },
+      {
+        id: "bj-bjjrkjxy", name: "北京金融科技学院", band: "保", nature: "民办本科", region: "北京", ref: "约 408-413 / 待核验",
+        risk: "中", majors: "金融科技、会计、财务管理、审计、数字经济",
+        intro: "北京民办本科，财经和数字经济标签明显。城市资源强，但学费和生活成本通常较高。",
+        analysis: "适合家庭预算充足、且希望走财经数字化方向的考生。若只是为了北京城市名片，性价比需谨慎。",
+        reason: "专业方向较明确，可作为后段保稳项，但费用是核心约束。",
+        verify: "核验是否高收费、住宿条件、专业组位次。"
+      },
+      {
+        id: "sd-qllgxy", name: "齐鲁理工学院", band: "保", nature: "民办本科", region: "山东济南/曲阜", ref: "约 407-412 / 待核验",
+        risk: "中低", majors: "护理、会计、学前教育、汉语言、康复治疗",
+        intro: "山东民办本科，护理、教育和管理类专业较多，保本科属性较强。",
+        analysis: "适合放在后段压实录取概率。若专业倾向护理或教育，实用性更好。",
+        reason: "同档民办中专业覆盖较完整，可替代重复保底项。",
+        verify: "核验校区、体检限制、学费和调剂专业。"
+      },
+      {
+        id: "sd-ytnsxy", name: "烟台南山学院", band: "保", nature: "民办本科", region: "山东烟台", ref: "约 407-412 / 待核验",
+        risk: "中低", majors: "会计、财务、物流、汉语国际教育、护理",
+        intro: "山东民办本科，地处烟台，应用型专业较多。",
+        analysis: "地理位置和生活环境尚可，录取概率若经官方核验匹配，可放在保志愿中后段。",
+        reason: "作为本科保底，比继续堆冲刺校更能降低滑档风险。",
+        verify: "核验历史类专业组、学费、住宿和交通成本。"
+      },
+      {
+        id: "tj-tjraxy", name: "天津仁爱学院", band: "保", nature: "民办本科", region: "天津", ref: "约 408-414 / 待核验",
+        risk: "中", majors: "财务管理、法学、英语、商务英语、传播类",
+        intro: "天津民办本科，区位不错，文管类专业适合历史类考生筛选。",
+        analysis: "天津城市热度会带来一定波动，适合保稳交界位置，不宜排到最后才兜底。",
+        reason: "城市和专业可接受度较好，适合替代重复的省外民办保底。",
+        verify: "核验 2025 官方位次和 2026 计划变化。"
+      },
+      {
+        id: "jx-ncgxy", name: "南昌工学院", band: "保", nature: "民办本科", region: "江西南昌", ref: "约 407-412 / 待核验",
+        risk: "中低", majors: "会计、财务、审计、学前教育、汉语言",
+        intro: "江西民办本科，南昌省会区位，文管教育类专业较多。",
+        analysis: "适合在后段作为本科身份兜底。若官方位次低于 26000，可保底价值更强。",
+        reason: "地域热度适中，专业实用性尚可，能提高后段安全垫。",
+        verify: "核验专业组代码、学费和专业调剂范围。"
+      },
+      {
+        id: "cq-cqhtzy", name: "重庆航天职业技术学院", band: "垫", nature: "公办高职", region: "重庆", ref: "约 416-419 / 专科高分线索",
+        risk: "低", majors: "现代文秘、电子商务、空乘服务、数字媒体、财务",
+        intro: "公办高职，航天行业背景和重庆区位有一定就业优势。",
+        analysis: "如果本科批极端失手，公办高职强专业比低质量民办更务实。但若坚定要本科，应放在本科批外另行考虑。",
+        reason: "作为兜底思路，不建议占用过多本科批志愿注意力。",
+        verify: "确认是否属于专科批，不要误填到本科批模型。"
+      },
+      {
+        id: "bj-bjxxzy", name: "北京信息职业技术学院", band: "垫", nature: "公办高职", region: "北京", ref: "约 420+ / 专科高分线索",
+        risk: "低", majors: "大数据与会计、电子商务、数字媒体、信息服务",
+        intro: "北京公办高职，信息技术背景强，城市资源好。",
+        analysis: "专科层面质量较高，但不替代本科批保底。适合专科批优质专业兜底。",
+        reason: "若家庭能接受高职，就业导向强；本科优先时仅作备选。",
+        verify: "确认批次、住宿和专业实际录取分。"
+      },
+      {
+        id: "js-njxxzy", name: "南京信息职业技术学院", band: "垫", nature: "公办高职", region: "江苏南京", ref: "约 418 / 专科高分线索",
+        risk: "低", majors: "数字媒体、现代通信、商务数据、会计",
+        intro: "江苏优质公办高职，信息类专业基础较强。",
+        analysis: "若专科批填报，适合放在高质量公办高职前列。对本科批模型只作底线参考。",
+        reason: "专业和城市质量较好，适合作为专科强校兜底。",
+        verify: "确认 2026 甘肃专科批计划。"
+      },
+      {
+        id: "sx-xahkzy", name: "西安航空职业技术学院", band: "垫", nature: "公办高职", region: "陕西西安", ref: "约 418 / 专科高分线索",
+        risk: "低", majors: "航空服务、民航运输、电子商务、现代物流",
+        intro: "陕西公办高职，航空制造和服务类特色明显，离甘肃较近。",
+        analysis: "专科批兜底时很有实用价值，适合看重就业和地域便利的家庭。",
+        reason: "区域近、行业特色强，可作为专科兜底重点。",
+        verify: "确认专业是否适合历史类和身体条件。"
+      },
+      {
+        id: "gs-lzzyjs", name: "兰州职业技术学院", band: "垫", nature: "公办高职", region: "甘肃兰州", ref: "专科批 / 待核验",
+        risk: "低", majors: "学前教育、会计、电子商务、数字媒体、现代文秘",
+        intro: "省内公办高职，生活成本低，便于就业实习和家庭照应。",
+        analysis: "如果本科批未录，省内公办高职强专业是务实兜底。建议在专科批另做完整方案。",
+        reason: "本地成本低、确定性高，作为最后防线。",
+        verify: "单独核验专科批计划和专业分。"
+      },
+      {
+        id: "gs-gswszy", name: "甘肃卫生职业学院", band: "垫", nature: "公办高职", region: "甘肃兰州", ref: "专科批 / 待核验",
+        risk: "低", majors: "护理、助产、康复治疗、医学检验相关",
+        intro: "省内卫生类公办高职，护理健康方向就业路径明确。",
+        analysis: "若愿意走医疗护理路线，它比许多泛管理类低分本科更有就业指向。但学历层次是专科。",
+        reason: "作为专科兜底质量较高，适合就业导向家庭。",
+        verify: "核验体检限制、实习医院和升本通道。"
+      }
+    ];
+
+    const defaultPlan = [
+      "gs-lzshzyjsdx", "gs-gslyzyjsdx", "gs-gsmzsfx", "hb-hbbfxy", "tj-bhwsxy",
+      "hb-hbdfxy", "sx-xbdxxdxy", "hb-whswgc",
+      "js-wxthxy", "gd-hnnydzj", "nx-nxlgxy", "cq-cqrwkj", "hb-hbwgxy",
+      "ha-zzgsxy", "hb-hbwlgc", "zj-ndkxyjs", "js-njgypl", "yn-kmykhy",
+      "js-jdcjxy", "sh-shsdxy", "tj-tjkjdx",
+      "qh-qhmzdx", "gs-lzgsxy", "sx-xaoyxy", "sd-sdycxy", "zj-zjsrxy",
+      "gx-lzgxy", "zj-sxxy", "sd-xxxy", "sx-xafyx", "sx-xapxxy",
+      "gs-lzxxkjxy", "gs-lzbwkj", "hn-hnyyjs", "fj-fzgsxy", "cq-cqydxy",
+      "bj-bjjrkjxy", "sd-qllgxy", "sd-ytnsxy", "tj-tjraxy", "jx-ncgxy",
+      "cq-cqhtzy", "bj-bjxxzy", "js-njxxzy", "sx-xahkzy"
+    ];
+
+    function alt(id, name, band, nature, region, ref, risk, majors) {
+      return {
+        id, name, band, nature, region, ref, risk, majors,
+        intro: "这是为当前志愿位准备的同范围备选，不占用原 45 个预填志愿。它的作用是给这一行提供可替换方案，而不是在原表内部互换。",
+        analysis: "参考区间与当前志愿位接近，但第三方公开数据完整性有限。正式填报前必须用甘肃省教育考试院官方投档线查询、2026 招生专业目录和学校招生章程逐项核验。",
+        reason: "作为同位次、同层级或同性质的替换项，用来在专业、地区、学费或风险不合适时替换当前行。",
+        verify: "核验 2025 官方最低分/位次、2026 甘肃历史类计划、院校专业组代码、学费、校区和调剂范围。"
+      };
+    }
+
+    const rowAlternatives = [
+      [alt("alt-01-jlxy", "吉利学院", "冲", "民办本科", "四川成都", "约 421-425 / 同分段备选", "中高", "财务管理、网络与新媒体、知识产权、电子商务"), alt("alt-01-cdwlxy", "成都文理学院", "冲", "民办本科", "四川成都", "约 421-425 / 同分段备选", "中高", "汉语言文学、会计、法学、学前教育")],
+      [alt("alt-02-scgsxy", "四川工商学院", "冲", "民办本科", "四川成都/眉山", "约 421-425 / 同分段备选", "中高", "财务管理、审计、汉语言、电子商务"), alt("alt-02-nclgxy", "南昌理工学院", "冲", "民办本科", "江西南昌", "约 421-425 / 同分段备选", "中高", "会计、法学、汉语言、网络与新媒体")],
+      [alt("alt-03-jxkjxy", "江西科技学院", "冲", "民办本科", "江西南昌", "约 422-426 / 同分段备选", "高", "护理、会计、商务英语、学前教育"), alt("alt-03-whgsxy", "武汉工商学院", "冲", "民办本科", "湖北武汉", "约 422-426 / 同分段备选", "高", "会计、法学、新闻学、电子商务")],
+      [alt("alt-04-whxy", "武汉学院", "冲", "民办本科", "湖北武汉", "约 422-426 / 同分段备选", "高", "法学、会计、财务管理、网络与新媒体"), alt("alt-04-wcsyxy", "武昌首义学院", "冲", "民办本科", "湖北武汉", "约 422-426 / 同分段备选", "高", "汉语言、新闻学、财务管理、法学")],
+      [alt("alt-05-hkxy", "汉口学院", "冲", "民办本科", "湖北武汉", "约 421-425 / 同分段备选", "中高", "汉语言文学、法学、财务会计、网络与新媒体"), alt("alt-05-csyxy", "长沙医学院", "冲", "民办本科", "湖南长沙", "约 421-425 / 同分段备选", "中高", "护理学、助产学、医学管理、健康服务")],
+      [alt("alt-06-zzxsy", "郑州西亚斯学院", "冲", "民办本科", "河南郑州", "约 421-424 / 同分段备选", "中高", "会计、法学、英语、新闻传播"), alt("alt-06-sqxy", "商丘学院", "冲", "民办本科", "河南商丘", "约 421-424 / 同分段备选", "中高", "汉语言、会计、学前教育、电子商务")],
+      [alt("alt-07-qdbhxy", "青岛滨海学院", "冲", "民办本科", "山东青岛", "约 421-425 / 同分段备选", "高", "护理、学前教育、财务管理、汉语国际教育"), alt("alt-07-dlcjxy", "大连财经学院", "冲", "民办本科", "辽宁大连", "约 421-425 / 同分段备选", "高", "会计、财务管理、审计、税收学")],
+      [alt("alt-08-tjcjzj", "天津财经大学珠江学院", "冲", "民办本科", "天津", "约 421-424 / 同分段备选", "中高", "会计、财务管理、金融科技、审计"), alt("alt-08-whqcxy", "武汉晴川学院", "冲", "民办本科", "湖北武汉", "约 421-424 / 同分段备选", "中高", "会计、新闻学、英语、电子商务")],
+      [alt("alt-09-ahxhxy", "安徽新华学院", "稳", "民办本科", "安徽合肥", "约 417-419 / 同分段备选", "中", "会计、汉语言、网络与新媒体、审计"), alt("alt-09-ahwgy", "安徽外国语学院", "稳", "民办本科", "安徽合肥", "约 417-419 / 同分段备选", "中", "英语、商务英语、汉语国际教育、会计")],
+      [alt("alt-10-hfcsxy", "合肥城市学院", "稳", "民办本科", "安徽合肥", "约 417-419 / 同分段备选", "中", "财务管理、市场营销、人力资源、风景园林管理"), alt("alt-10-ntlgxy", "南通理工学院", "稳", "民办本科", "江苏南通", "约 417-419 / 同分段备选", "中", "财务管理、物流管理、电子商务、酒店管理")],
+      [alt("alt-11-sjxy", "三江学院", "稳", "民办本科", "江苏南京", "约 417-419 / 同分段备选", "中", "汉语言、新闻学、会计、知识产权"), alt("alt-11-jdjxxy", "江苏大学京江学院", "稳", "民办本科", "江苏镇江", "约 417-419 / 同分段备选", "中", "会计、市场营销、公共事业管理、英语")],
+      [alt("alt-12-ccdhxy", "常州大学怀德学院", "稳", "民办本科", "江苏泰州", "约 416-419 / 同分段备选", "中", "会计、财务管理、国际经济、英语"), alt("alt-12-zjywgy", "浙江越秀外国语学院", "稳", "民办本科", "浙江绍兴", "约 416-419 / 同分段备选", "中", "商务英语、汉语国际教育、传播学、电子商务")],
+      [alt("alt-13-wzsxy", "温州商学院", "稳", "民办本科", "浙江温州", "约 416-419 / 同分段备选", "中", "会计、税收、审计、网络与新媒体"), alt("alt-13-yexy", "仰恩大学", "稳", "民办本科", "福建泉州", "约 416-419 / 同分段备选", "中", "汉语言、会计、财务管理、法学")],
+      [alt("alt-14-xmgxy", "厦门工学院", "稳", "民办本科", "福建厦门", "约 416-419 / 同分段备选", "中", "传播学、财务管理、国际商务、市场营销"), alt("alt-14-fzwm", "福州外语外贸学院", "稳", "民办本科", "福建福州", "约 416-419 / 同分段备选", "中", "财务管理、审计、英语、网络与新媒体")],
+      [alt("alt-15-mnkj", "闽南科技学院", "稳", "民办本科", "福建泉州", "约 416-418 / 同分段备选", "中", "汉语言、广告学、工商管理、英语"), alt("alt-15-jxyykj", "江西应用科技学院", "稳", "民办本科", "江西南昌", "约 416-418 / 同分段备选", "中", "会计、财务管理、小学教育、商务英语")],
+      [alt("alt-16-ncjtxy", "南昌交通学院", "稳", "民办本科", "江西南昌", "约 416-419 / 同分段备选", "中高", "会计、金融学、英语、人力资源"), alt("alt-16-hbsmxy", "湖北商贸学院", "稳", "民办本科", "湖北武汉", "约 416-419 / 同分段备选", "中高", "会计、审计、电子商务、金融学")],
+      [alt("alt-17-wclgxy", "武昌理工学院", "稳", "民办本科", "湖北武汉", "约 416-419 / 同分段备选", "中高", "汉语言、护理、法学、会计"), alt("alt-17-hnswjj", "湖南涉外经济学院", "稳", "民办本科", "湖南长沙", "约 416-419 / 同分段备选", "中高", "会计、汉语言、网络与新媒体、商务英语")],
+      [alt("alt-18-gzsxy", "广州商学院", "稳", "民办本科", "广东广州", "约 415-418 / 同分段备选", "中", "会计、法学、商务英语、市场营销"), alt("alt-18-gzkjxy", "广东科技学院", "稳", "民办本科", "广东东莞", "约 415-418 / 同分段备选", "中", "财务管理、电子商务、物流管理、英语")],
+      [alt("alt-19-cqcskj", "重庆城市科技学院", "稳", "民办本科", "重庆", "约 416-419 / 同分段备选", "中高", "法学、会计、网络与新媒体、跨境电商"), alt("alt-19-cddrxy", "成都东软学院", "稳", "民办本科", "四川成都", "约 416-419 / 同分段备选", "中高", "电子商务、财务管理、数字媒体、英语")],
+      [alt("alt-20-sdxdxy", "山东现代学院", "稳", "民办本科", "山东济南", "约 414-418 / 同分段备选", "中高", "护理、学前教育、财务管理、康复治疗"), alt("alt-20-hbyxy", "河北医科大学临床学院", "稳", "民办本科", "河北石家庄", "约 414-418 / 同分段备选", "中高", "护理、健康服务、医学相关专业需核验")],
+      [alt("alt-21-hljsjxy", "黑龙江财经学院", "稳", "民办本科", "黑龙江哈尔滨", "约 413-418 / 同分段备选", "中高", "会计、审计、财务管理、汉语言"), alt("alt-21-lncmxy", "辽宁传媒学院", "稳", "民办本科", "辽宁沈阳", "约 413-418 / 同分段备选", "中高", "网络与新媒体、广告学、文化产业管理、汉语言")],
+      [alt("alt-22-yckjxy", "银川科技学院", "保", "民办本科", "宁夏银川", "约 412-416 / 同分段备选", "中", "汉语言、财务管理、小学教育、网络与新媒体"), alt("alt-22-ycnyxy", "银川能源学院", "保", "民办本科", "宁夏银川", "约 412-416 / 同分段备选", "中", "财务管理、商务英语、人力资源、社会工作")],
+      [alt("alt-23-nxdxxh", "宁夏大学新华学院", "保", "民办本科", "宁夏银川", "约 411-415 / 同分段备选", "中低", "汉语言、法学、财务管理、新闻学"), alt("alt-23-xjxy", "西京学院", "保", "民办本科", "陕西西安", "约 411-415 / 同分段备选", "中低", "会计、审计、护理、网络与新媒体")],
+      [alt("alt-24-sxgjsm", "陕西国际商贸学院", "保", "民办本科", "陕西西安", "约 411-415 / 同分段备选", "中", "财务管理、国际商务、护理、学前教育"), alt("alt-24-sxfzgc", "陕西服装工程学院", "保", "民办本科", "陕西西安", "约 411-415 / 同分段备选", "中", "会计、市场营销、小学教育、服装与服饰管理")],
+      [alt("alt-25-xagsxy", "西安工商学院", "保", "民办本科", "陕西西安", "约 410-414 / 同分段备选", "中低", "汉语言、财务管理、网络与新媒体、会计"), alt("alt-25-xamd", "西安明德理工学院", "保", "民办本科", "陕西西安", "约 410-414 / 同分段备选", "中低", "会计、英语、市场营销、电子商务")],
+      [alt("alt-26-xajtgc", "西安交通工程学院", "保", "民办本科", "陕西西安", "约 410-414 / 同分段备选", "中", "财务管理、物流管理、交通运输管理、电子商务"), alt("alt-26-xasiyuan", "西安思源学院", "保", "民办本科", "陕西西安", "约 410-414 / 同分段备选", "中", "小学教育、汉语言、财务管理、护理")],
+      [alt("alt-27-xawsxy", "西安外事学院", "保", "民办本科", "陕西西安", "约 410-413 / 同分段备选", "中低", "会计、英语、汉语言、护理"), alt("alt-27-xcxz", "西安财经大学行知学院", "保", "民办本科", "陕西西安", "约 410-413 / 同分段备选", "中低", "会计、财务管理、审计、金融学")],
+      [alt("alt-28-ydcx", "延安大学西安创新学院", "保", "民办本科", "陕西西安", "约 410-414 / 同分段备选", "中", "汉语言、护理、会计、小学教育"), alt("alt-28-cdyx", "成都银杏酒店管理学院", "保", "民办本科", "四川成都", "约 410-414 / 同分段备选", "中", "会计、审计、旅游管理、人力资源")],
+      [alt("alt-29-scgykj", "四川工业科技学院", "保", "民办本科", "四川德阳", "约 409-413 / 同分段备选", "中低", "财务管理、物流管理、学前教育、电子商务"), alt("alt-29-sccy", "四川文化艺术学院", "保", "民办本科", "四川绵阳", "约 409-413 / 同分段备选", "中低", "汉语国际教育、文化产业管理、艺术管理、传媒类")],
+      [alt("alt-30-mycx", "绵阳城市学院", "保", "民办本科", "四川绵阳", "约 409-413 / 同分段备选", "中", "财务管理、工商管理、学前教育、英语"), alt("alt-30-ynjjgl", "云南经济管理学院", "保", "民办本科", "云南昆明", "约 409-413 / 同分段备选", "中", "护理、会计、学前教育、财务管理")],
+      [alt("alt-31-kmcsxy", "昆明城市学院", "保", "民办本科", "云南昆明", "约 410-414 / 同分段备选", "中", "汉语言、法学、会计、学前教育"), alt("alt-31-yngsxy", "云南工商学院", "保", "民办本科", "云南昆明", "约 410-414 / 同分段备选", "中", "护理、会计、学前教育、电子商务")],
+      [alt("alt-32-glxxkj", "桂林信息科技学院", "保", "民办本科", "广西桂林", "约 408-413 / 同分段备选", "中低", "财务管理、市场营销、英语、电子商务"), alt("alt-32-gxwgy", "广西外国语学院", "保", "民办本科", "广西南宁", "约 408-413 / 同分段备选", "中低", "汉语国际教育、英语、财务管理、国际经济")],
+      [alt("alt-33-nnxy", "南宁学院", "保", "民办本科", "广西南宁", "约 408-413 / 同分段备选", "中低", "会计、财务管理、工商管理、物流管理"), alt("alt-33-hkjjxy", "海口经济学院", "保", "民办本科", "海南海口", "约 408-413 / 同分段备选", "中低", "会计、财务管理、旅游管理、网络与新媒体")],
+      [alt("alt-34-syxy", "三亚学院", "保", "民办本科", "海南三亚", "约 408-413 / 同分段备选", "中低", "法学、会计、汉语言、旅游管理"), alt("alt-34-ljwhly", "丽江文化旅游学院", "保", "民办本科", "云南丽江", "约 408-413 / 同分段备选", "中低", "汉语言、会计、旅游管理、学前教育")],
+      [alt("alt-35-jxfsxy", "江西服装学院", "保", "民办本科", "江西南昌", "约 408-412 / 同分段备选", "中低", "财务管理、电子商务、广告学、文化产业管理"), alt("alt-35-ncyyjs", "南昌应用技术师范学院", "保", "民办本科", "江西南昌", "约 408-412 / 同分段备选", "中低", "汉语言、财务会计教育、英语、旅游管理")],
+      [alt("alt-36-ahwd", "安徽文达信息工程学院", "保", "民办本科", "安徽合肥", "约 408-413 / 同分段备选", "中", "财务管理、商务英语、电子商务、人力资源"), alt("alt-36-bbgsxy", "蚌埠工商学院", "保", "民办本科", "安徽蚌埠", "约 408-413 / 同分段备选", "中", "会计、财务管理、审计、金融学")],
+      [alt("alt-37-ytkjxy", "烟台科技学院", "保", "民办本科", "山东烟台", "约 408-413 / 同分段备选", "中", "会计、财务管理、新闻学、汉语言"), alt("alt-37-qdcxy", "青岛城市学院", "保", "民办本科", "山东青岛", "约 408-413 / 同分段备选", "中", "会计、市场营销、国际商务、物流管理")],
+      [alt("alt-38-wfkjxy", "潍坊科技学院", "保", "民办本科", "山东潍坊", "约 407-412 / 同分段备选", "中低", "学前教育、财务管理、护理、英语"), alt("alt-38-tskjxy", "泰山科技学院", "保", "民办本科", "山东泰安", "约 407-412 / 同分段备选", "中低", "会计、财务管理、电子商务、法学")],
+      [alt("alt-39-sdhy", "山东华宇工学院", "保", "民办本科", "山东德州", "约 407-412 / 同分段备选", "中低", "财务管理、商务英语、物流管理、人力资源"), alt("alt-39-hbkjxy", "河北科技学院", "保", "民办本科", "河北保定", "约 407-412 / 同分段备选", "中低", "护理、会计、学前教育、电子商务")],
+      [alt("alt-40-bdlg", "保定理工学院", "保", "民办本科", "河北保定", "约 408-414 / 同分段备选", "中", "会计、财务管理、英语、工商管理"), alt("alt-40-czjt", "沧州交通学院", "保", "民办本科", "河北沧州", "约 408-414 / 同分段备选", "中", "财务管理、物流管理、工商管理、英语")],
+      [alt("alt-41-yjlg", "燕京理工学院", "保", "民办本科", "河北廊坊", "约 407-412 / 同分段备选", "中低", "法学、会计、护理、汉语言"), alt("alt-41-hebdf", "哈尔滨广厦学院", "保", "民办本科", "黑龙江哈尔滨", "约 407-412 / 同分段备选", "中低", "会计、汉语言、审计、工商管理")],
+      [alt("alt-42-sxcjzy", "陕西财经职业技术学院", "垫", "公办高职", "陕西咸阳", "专科批 / 同范围备选", "低", "大数据与会计、财税、电子商务、金融服务"), alt("alt-42-sxjtzy", "陕西交通职业技术学院", "垫", "公办高职", "陕西西安", "专科批 / 同范围备选", "低", "现代物流、交通运营、电子商务、城市轨道服务")],
+      [alt("alt-43-xyzy", "咸阳职业技术学院", "垫", "公办高职", "陕西咸阳", "专科批 / 同范围备选", "低", "学前教育、护理、大数据与会计、电子商务"), alt("alt-43-ylzy", "杨凌职业技术学院", "垫", "公办高职", "陕西杨凌", "专科批 / 同范围备选", "低", "农林经济、会计、现代文秘、电子商务")],
+      [alt("alt-44-nxzy", "宁夏职业技术学院", "垫", "公办高职", "宁夏银川", "专科批 / 同范围备选", "低", "大数据与会计、电子商务、旅游管理、健康服务"), alt("alt-44-qhwszy", "青海卫生职业技术学院", "垫", "公办高职", "青海西宁", "专科批 / 同范围备选", "低", "护理、助产、康复治疗、医学检验")],
+      [alt("alt-45-cqdzzy", "重庆电子科技职业大学", "垫", "公办职业本科/高职", "重庆", "专科或职业本科 / 待核验", "低", "数字媒体、电子商务、现代物流、信息服务"), alt("alt-45-scjzzy", "四川建筑职业技术学院", "垫", "公办高职", "四川德阳", "专科批 / 同范围备选", "低", "工程造价、现代文秘、物流管理、建筑经济")]
+    ];
+
+    const alternativeCandidates = [];
+    rowAlternatives.forEach(group => {
+      group.forEach(item => alternativeCandidates.push(item));
+    });
+    const allCandidates = [...candidates, ...alternativeCandidates];
+
+    let plan = [...defaultPlan];
+    let selectedRow = 0;
+
+    const bandClass = { "冲": "tag-rush", "稳": "tag-stable", "保": "tag-safe", "垫": "tag-floor" };
+    const byId = {};
+    allCandidates.forEach(item => {
+      byId[item.id] = item;
+    });
+
+    function natureClass(item) {
+      if (item.nature.includes("公办职业本科")) return "nature-voc-bachelor";
+      if (item.nature.includes("公办本科")) return "nature-public";
+      if (item.nature.includes("民办本科")) return "nature-private";
+      if (item.nature.includes("公办高职")) return "nature-vocational";
+      return "nature-other";
+    }
+
+    function tuitionFor(item) {
+      if (item.tuition) return item.tuition;
+      if (item.nature.includes("公办高职")) return "约 4500-8000 元，按专业核验";
+      if (item.nature.includes("公办职业本科")) return "约 4500-6500 元，按专业核验";
+      if (item.nature.includes("公办本科")) return "约 3800-6000 元，预科/特殊类另核";
+      if (["北京", "上海", "天津", "江苏", "浙江", "广东", "福建"].some(region => item.region.includes(region))) {
+        return "约 18000-35000 元，沿海/热门城市偏高";
+      }
+      if (item.nature.includes("民办本科")) return "约 15000-28000 元，按专业核验";
+      return "待核验";
+    }
+
+    function employmentFor(item) {
+      const text = `${item.majors} ${item.name}`;
+      if (/护理|助产|康复|医学|健康/.test(text)) {
+        return "医疗护理、康养、基层卫生；需求稳定，辛苦度高，考证和体检限制关键。";
+      }
+      if (/会计|财务|审计|税收|金融|数字经济/.test(text)) {
+        return "企业财务、审计税务、公考、金融后台；就业面广，竞争大，建议叠加证书和数据能力。";
+      }
+      if (/学前|小学|师范|教育|汉语言|文秘|秘书/.test(text)) {
+        return "教师、文秘、公考、新媒体编辑；稳定性取决于考编/升学，适合耐心型学生。";
+      }
+      if (/法学|合规|公共管理|社会工作|行政/.test(text)) {
+        return "公考、基层法务、企业合规、社工；上限依赖法考、考研或体制内考试。";
+      }
+      if (/英语|商务英语|外语|翻译|国际/.test(text)) {
+        return "外贸、跨境电商、教育、运营；单一外语承压，需复合商科或数字技能。";
+      }
+      if (/网络与新媒体|数字媒体|电子商务|电商|传播|媒体|短视频|信息/.test(text)) {
+        return "内容运营、电商运营、数字营销、数据助理；实习和作品集决定就业质量。";
+      }
+      if (/旅游|酒店|物流|市场营销|工商管理|人力资源/.test(text)) {
+        return "服务业、运营、行政、人力、销售管理；岗位多但门槛低，需警惕低薪和高流动。";
+      }
+      if (/航空|通信|大数据|现代通信|电子/.test(text)) {
+        return "航空服务、信息服务、技术支持、运营岗位；专科强校更看重技能证书和实训。";
+      }
+      return "就业路径需按具体专业判断，优先选择技能明确、可考证、可实习的方向。";
+    }
+
+    function poolForRow(row, selectedId) {
+      const ids = [selectedId, ...(rowAlternatives[row] || []).map(item => item.id)];
+      return [...new Set(ids)].filter(id => byId[id]);
+    }
+
+    function optionLabel(id, row) {
+      const item = byId[id];
+      const existingIndex = plan.findIndex((planId, index) => planId === id && index !== row);
+      const status = existingIndex >= 0 ? `已在第 ${existingIndex + 1} 志愿，选择后互换` : (defaultPlan[row] === id ? "当前预填" : "本行备选");
+      return `${item.name}｜${item.band}｜${item.region}｜${status}`;
+    }
+
+    function buildOptions(selectedId, row) {
+      return poolForRow(row, selectedId).map(id => {
+        const selected = id === selectedId ? " selected" : "";
+        return `<option value="${id}"${selected}>${optionLabel(id, row)}</option>`;
+      }).join("");
+    }
+
+    function applySelection(row, nextId) {
+      const currentId = plan[row];
+      if (currentId === nextId) return;
+      const existingIndex = plan.findIndex((id, index) => id === nextId && index !== row);
+      plan[row] = nextId;
+      if (existingIndex >= 0) {
+        plan[existingIndex] = currentId;
+      }
+    }
+
+    function jumpToSelectedAnalysis() {
+      const target = document.getElementById("employmentSection");
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function visiblePlanItems() {
+      const query = document.getElementById("searchBox").value.trim().toLowerCase();
+      const band = document.getElementById("bandFilter").value;
+      return plan.map((id, index) => ({ item: byId[id], index })).filter(({ item }) => {
+        const haystack = `${item.name} ${item.region} ${item.nature} ${item.majors} ${item.reason} ${employmentFor(item)}`.toLowerCase();
+        if (band !== "all" && item.band !== band) return false;
+        if (query && !haystack.includes(query)) return false;
+        return true;
+      });
+    }
+
+    function renderPlan() {
+      const tbody = document.getElementById("planBody");
+      const mobilePlan = document.getElementById("mobilePlan");
+      const visibleItems = visiblePlanItems();
+      tbody.innerHTML = "";
+      mobilePlan.innerHTML = "";
+      renderMobilePlan(visibleItems);
+
+      if (!visibleItems.length) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="12" class="empty-state">没有匹配的学校，请清空搜索词或切换层级筛选。</td>`;
+        tbody.appendChild(tr);
+        return;
+      }
+
+      visibleItems.forEach(({ item, index }) => {
+        const tr = document.createElement("tr");
+        tr.dataset.index = index;
+        if (index === selectedRow) tr.classList.add("selected-row");
+        tr.innerHTML = `
+          <td class="row-index">${index + 1}</td>
+          <td><span class="tag ${bandClass[item.band]}">${item.band}</span></td>
+          <td>
+            <select class="school-select" data-index="${index}">${buildOptions(item.id, index)}</select>
+            <div class="replacement-note">下拉可选备选学校。</div>
+          </td>
+          <td><span class="nature-tag ${natureClass(item)}">${item.nature}</span></td>
+          <td>${item.region}</td>
+          <td class="score-cell">${item.ref}</td>
+          <td class="score-cell">${tuitionFor(item)}</td>
+          <td class="risk">${item.risk}</td>
+          <td>${item.majors}</td>
+          <td class="reason">${employmentFor(item)}</td>
+          <td class="reason">${item.reason}</td>
+          <td class="mini">${item.verify}</td>
+        `;
+        tr.addEventListener("click", event => {
+          if (event.target.tagName !== "SELECT") {
+            selectedRow = index;
+            updateSelectedRow();
+            renderDetail(item, index);
+            jumpToSelectedAnalysis();
+          }
+        });
+        tbody.appendChild(tr);
+      });
+
+      document.querySelectorAll(".school-select").forEach(select => {
+        select.addEventListener("change", event => {
+          const row = Number(event.target.dataset.index);
+          applySelection(row, event.target.value);
+          selectedRow = row;
+          renderPlan();
+          renderDetail(byId[plan[row]], row);
+          jumpToSelectedAnalysis();
+        });
+      });
+    }
+
+    function renderMobilePlan(items) {
+      const mobilePlan = document.getElementById("mobilePlan");
+      if (!items.length) {
+        mobilePlan.innerHTML = `<div class="empty-state">没有匹配的学校，请清空搜索词或切换层级筛选。</div>`;
+        return;
+      }
+
+      items.forEach(({ item, index }) => {
+        const card = document.createElement("article");
+        card.className = "mobile-item";
+        card.dataset.index = index;
+        if (index === selectedRow) card.classList.add("selected-row");
+        card.innerHTML = `
+          <div class="mobile-item-head">
+            <span class="mobile-index">第 ${index + 1} 志愿</span>
+            <span class="tag ${bandClass[item.band]}">${item.band}</span>
+          </div>
+          <select class="school-select" data-index="${index}" aria-label="选择第 ${index + 1} 志愿学校">${buildOptions(item.id, index)}</select>
+          <div class="replacement-note">下拉可选备选学校。</div>
+          <div class="mobile-meta">
+            <div><strong>性质：</strong><span class="nature-tag ${natureClass(item)}">${item.nature}</span></div>
+            <div><strong>地区：</strong>${item.region}</div>
+            <div><strong>2025 参考：</strong>${item.ref}</div>
+            <div><strong>学费：</strong>${tuitionFor(item)}</div>
+            <div><strong>风险：</strong>${item.risk}</div>
+            <div><strong>专业：</strong>${item.majors}</div>
+            <div><strong>就业：</strong>${employmentFor(item)}</div>
+            <div><strong>理由：</strong>${item.reason}</div>
+          </div>
+        `;
+        card.addEventListener("click", event => {
+          if (event.target.tagName !== "SELECT") {
+            selectedRow = index;
+            updateSelectedRow();
+            renderDetail(item, index);
+            jumpToSelectedAnalysis();
+          }
+        });
+        mobilePlan.appendChild(card);
+      });
+
+      document.querySelectorAll(".mobile-plan .school-select").forEach(select => {
+        select.addEventListener("change", event => {
+          const row = Number(event.target.dataset.index);
+          applySelection(row, event.target.value);
+          selectedRow = row;
+          renderPlan();
+          renderDetail(byId[plan[row]], row);
+          jumpToSelectedAnalysis();
+        });
+      });
+    }
+
+    function updateSelectedRow() {
+      document.querySelectorAll("#planBody tr, #mobilePlan .mobile-item").forEach(row => {
+        row.classList.toggle("selected-row", Number(row.dataset.index) === selectedRow);
+      });
+    }
+
+    function renderDetail(item, index) {
+      document.getElementById("detailBox").innerHTML = `
+        <h3>${index + 1}. ${item.name}</h3>
+        <p><span class="tag ${bandClass[item.band]}">${item.band}</span> <span class="nature-tag ${natureClass(item)}">${item.nature}</span>｜${item.region}｜参考：${item.ref}｜风险：${item.risk}</p>
+        <p><strong>学费判断：</strong>${tuitionFor(item)}</p>
+        <p><strong>学校简介：</strong>${item.intro}</p>
+        <p><strong>专业建议：</strong>${item.majors}</p>
+        <p><strong>就业方向/预测：</strong>${employmentFor(item)}</p>
+        <p><strong>填报分析：</strong>${item.analysis}</p>
+        <p><strong>放入此层级的理由：</strong>${item.reason}</p>
+        <p class="mini"><strong>必须核验：</strong>${item.verify}</p>
+      `;
+    }
+
+    function exportCSV() {
+      const header = ["序号", "层级", "学校", "性质", "地区", "2025参考最低分位", "学费/年", "风险", "建议专业", "就业方向/预测", "理由", "核验动作"];
+      const rows = plan.map((id, index) => {
+        const item = byId[id];
+        return [
+          index + 1, item.band, item.name, item.nature, item.region, item.ref, tuitionFor(item), item.risk,
+          item.majors, employmentFor(item), item.reason, item.verify
+        ];
+      });
+      const csv = [header, ...rows].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+      const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "甘肃历史类411分志愿草表.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("searchBox").addEventListener("input", renderPlan);
+    document.getElementById("bandFilter").addEventListener("change", renderPlan);
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      plan = [...defaultPlan];
+      selectedRow = 0;
+      renderPlan();
+      renderDetail(byId[plan[0]], 0);
+    });
+    document.getElementById("exportBtn").addEventListener("click", exportCSV);
+    window.addEventListener("resize", () => renderPlan());
+
+    renderPlan();
+    renderDetail(byId[plan[selectedRow]], selectedRow);
+  </script>
+</body>
+</html>
