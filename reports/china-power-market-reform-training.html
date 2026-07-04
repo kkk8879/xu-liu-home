@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国电力市场改革培训材料</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f1f5f9;color:#1e293b;line-height:1.8;}
+  .container{max-width:1000px;margin:0 auto;padding:0 24px;}
+  
+  /* Cover */
+  .cover{background:linear-gradient(135deg,#1e3a5f 0%,#0f1f3a 100%);color:#fff;padding:80px 0 60px;text-align:center;}
+  .cover h1{font-size:42px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;}
+  .cover .line{width:80px;height:4px;background:#f59e0b;margin:0 auto 24px;border-radius:2px;}
+  .cover p{font-size:18px;color:#94a3b8;margin-bottom:8px;}
+  .cover .meta{font-size:14px;color:#64748b;margin-top:24px;}
+  .cover .meta i{margin:0 4px;color:#f59e0b;}
+  
+  /* Section */
+  .section{margin-top:40px;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:12px;border-bottom:3px solid #3b82f6;}
+  .section-header .num{width:36px;height:36px;border-radius:8px;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0;}
+  .section-header h2{font-size:24px;font-weight:700;color:#0f172a;}
+  
+  /* Page Card */
+  .page-card{background:#fff;border-radius:12px;padding:28px 32px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+  .page-card .page-label{font-size:12px;font-weight:600;color:#3b82f6;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
+  .page-card h3{font-size:22px;font-weight:700;color:#0f172a;margin-bottom:12px;}
+  .page-card .sub{font-size:14px;color:#64748b;margin-bottom:20px;}
+  
+  /* Grid layouts */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media(max-width:768px){
+    .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  }
+  .grid-6{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  @media(max-width:768px){.grid-6{grid-template-columns:1fr 1fr;}}
+  
+  .card-item{background:#f8fafc;border-radius:10px;padding:20px;}
+  .card-item .icon{font-size:28px;margin-bottom:8px;}
+  .card-item h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px;}
+  .card-item p{font-size:13px;color:#475569;line-height:1.7;}
+  .card-item .tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 10px;border-radius:4px;margin-top:8px;}
+  
+  /* Timeline */
+  .timeline{display:flex;gap:0;margin-bottom:24px;}
+  .tl-point{flex:1;text-align:center;position:relative;}
+  .tl-point .dot{width:14px;height:14px;border-radius:50%;margin:0 auto 6px;}
+  .tl-point .date{font-size:12px;font-weight:700;color:#0f172a;}
+  .tl-point .desc{font-size:11px;color:#64748b;}
+  .tl-line{height:3px;flex:0.5;background:#e2e8f0;margin-top:5px;}
+  
+  /* Phase cards */
+  .phase-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  @media(max-width:768px){.phase-grid{grid-template-columns:1fr;}}
+  .phase{border-radius:10px;padding:20px;}
+  .phase.p1{background:#eff6ff;}.phase.p2{background:#fffbeb;}.phase.p3{background:#ecfdf5;}
+  .phase .pyear{font-size:13px;font-weight:700;color:#3b82f6;margin-bottom:2px;}
+  .phase.p2 .pyear{color:#f59e0b;}.phase.p3 .pyear{color:#10b981;}
+  .phase .ptitle{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:8px;}
+  .phase p{font-size:13px;color:#475569;line-height:1.7;margin-bottom:12px;}
+  .phase ul{list-style:none;padding:0;margin:0;}
+  .phase ul li{font-size:12px;color:#475569;padding:3px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
+  .phase ul li::before{content:"▸ ";}.phase.p1 ul li::before{color:#3b82f6;}.phase.p2 ul li::before{color:#f59e0b;}.phase.p3 ul li::before{color:#10b981;}
+  
+  /* KPI */
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+  @media(max-width:768px){.kpi-row{grid-template-columns:1fr;}}
+  .kpi{background:#1e3a5f;border-radius:10px;padding:20px;text-align:center;color:#fff;}
+  .kpi .num{font-size:30px;font-weight:900;color:#f59e0b;}
+  .kpi .label{font-size:13px;color:#94a3b8;margin-top:4px;}
+  
+  /* Highlights */
+  .highlight-box{background:linear-gradient(135deg,#1e3a5f,#0f1f3a);border-radius:10px;padding:16px 20px;color:#e2e8f0;margin-top:16px;}
+  .highlight-box strong{color:#f59e0b;}
+  .highlight-box p{font-size:14px;margin:0;}
+  
+  /* Table */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+  thead{background:#f1f5f9;}
+  th{font-weight:700;color:#0f172a;padding:10px 12px;text-align:left;border-bottom:2px solid #e2e8f0;}
+  td{padding:8px 12px;border-bottom:1px solid #f1f5f9;color:#475569;}
+  tr:hover td{background:#f8fafc;}
+  
+  /* Formula */
+  .formula-box{background:#f8fafc;border-radius:10px;padding:20px 24px;text-align:center;margin-bottom:20px;}
+  .formula{font-size:18px;font-weight:700;}
+  .formula .hl{color:#3b82f6;}.formula .hl2{color:#f59e0b;}.formula .hl3{color:#10b981;}
+  .formula-note{font-size:13px;color:#64748b;margin-top:6px;}
+  
+  .stat-num{font-size:28px;font-weight:900;color:#3b82f6;line-height:1.2;}
+  .stat-label{font-size:13px;color:#475569;}
+  .stat-sub{font-size:11px;color:#94a3b8;}
+  
+  /* Two column highlight */
+  .two-case{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media(max-width:768px){.two-case{grid-template-columns:1fr;}}
+  .case{border-radius:10px;padding:20px;}
+  .case.down{background:#eff6ff;}.case.up{background:#fffbeb;}
+  .case .case-icon{font-size:24px;margin-bottom:6px;}
+  .case h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px;}
+  .case.down h4{color:#1d4ed8;}.case.up h4{color:#d97706;}
+  .case p{font-size:13px;color:#475569;line-height:1.6;margin-bottom:10px;}
+  .case .result{font-size:12px;font-weight:600;padding:6px 10px;border-radius:4px;display:inline-block;}
+  .case.down .result{background:#dbeafe;color:#1d4ed8;}.case.up .result{background:#fef3c7;color:#d97706;}
+  
+  .insight-list{display:flex;flex-direction:column;gap:12px;}
+  .insight-item{background:#fff;border-radius:10px;padding:16px 20px;display:flex;gap:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+  .insight-item .inum{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;}
+  .insight-item h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px;}
+  .insight-item p{font-size:13px;color:#475569;margin:0;}
+  
+  .footer{background:#0f1f3a;color:#94a3b8;text-align:center;padding:32px 0;margin-top:48px;font-size:13px;}
+  .footer h3{color:#fff;font-size:20px;margin-bottom:8px;}
+  
+  .role-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  @media(max-width:768px){.role-grid{grid-template-columns:1fr;}}
+  
+  .chart-placeholder{background:#f8fafc;border-radius:8px;padding:12px 16px;overflow-x:auto;}
+  .bar-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .bar-item .bar-label{width:60px;font-size:12px;color:#475569;text-align:right;flex-shrink:0;}
+  .bar-item .bar-fill{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:700;color:#fff;min-width:30px;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>中国电力市场改革<br>回顾与展望</h1>
+  <div class="line"></div>
+  <p>新一轮电力体制改革十年历程 · 政策解读 · 未来方向</p>
+  <div class="meta"><i class="fa-regular fa-clock"></i> 培训时长：约60分钟 &nbsp;&nbsp; <i class="fa-regular fa-calendar"></i> 2026年7月</div>
+</div>
+
+<div class="container">
+
+<!-- ===== 培训目标 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">1</div><h2>培训目标</h2></div>
+  <div class="page-card">
+    <div class="grid-3">
+      <div class="card-item" style="border-left:4px solid #3b82f6;">
+        <div class="icon">📖</div>
+        <h4>理解改革脉络</h4>
+        <p>系统梳理2015年新一轮电改至今的十年发展历程，掌握从计划体制到市场体制的转型逻辑与关键里程碑。</p>
+      </div>
+      <div class="card-item" style="border-left:4px solid #f59e0b;">
+        <div class="icon">🧩</div>
+        <h4>掌握市场架构</h4>
+        <p>深入理解"中长期+现货+辅助服务"多层次市场体系、新能源入市机制及全国统一电力市场建设蓝图。</p>
+      </div>
+      <div class="card-item" style="border-left:4px solid #10b981;">
+        <div class="icon">📈</div>
+        <h4>把握未来方向</h4>
+        <p>解读2026年最新政策文件与"十五五"改革方向，为业务决策提供前瞻性参考。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 为什么需要改革 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">2</div><h2>为什么需要电力改革？</h2></div>
+  <div class="page-card">
+    <p class="sub">改革前，电力行业长期以计划调度为主，面临资源配置效率低下、价格信号扭曲等结构性问题</p>
+    <div class="grid-2">
+      <div class="card-item"><div style="color:#ef4444;font-size:20px;margin-bottom:6px;">⚡</div><h4>效率低下</h4><p>发电计划按行政安排而非市场需求执行，机组利用率不均衡，高成本与低成本机组同时运行</p></div>
+      <div class="card-item"><div style="color:#ef4444;font-size:20px;margin-bottom:6px;">💰</div><h4>价格扭曲</h4><p>上网电价由政府统一定价，无法反映供需关系变化，"市场煤、计划电"矛盾突出</p></div>
+      <div class="card-item"><div style="color:#ef4444;font-size:20px;margin-bottom:6px;">🚧</div><h4>市场壁垒</h4><p>省间交易壁垒严重，电力资源难以在全国范围内优化配置，跨省跨区送电规模有限</p></div>
+      <div class="card-item"><div style="color:#ef4444;font-size:20px;margin-bottom:6px;">🔌</div><h4>用户无选择权</h4><p>电网统购统销，用户无法自主选择购电方式，售电侧缺乏竞争</p></div>
+    </div>
+    <div class="highlight-box"><p><strong>改革目标：</strong> "管住中间、放开两头"— 管住输配电网环节，放开发电和售电两侧竞争</p></div>
+  </div>
+</div>
+
+<!-- ===== 2002 厂网分开 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">3</div><h2>2002年：厂网分开——第一轮电改</h2></div>
+  <div class="page-card">
+    <p class="sub">国务院5号文 · 拆分国家电力公司，引入发电侧竞争</p>
+    <div class="grid-2">
+      <div class="card-item" style="border-left:4px solid #3b82f6;">
+        <div class="stat-num" style="font-size:16px;">🔧 标志性事件</div>
+        <h4 style="margin-top:6px;">拆分国家电力公司</h4>
+        <p>原国家电力公司拆分为两大电网（国家电网、南方电网）和五大发电集团（华能、大唐、华电、国电、国家电投），实现发电侧竞争格局</p>
+      </div>
+      <div class="card-item" style="border-left:4px solid #f59e0b;">
+        <div class="stat-num" style="font-size:16px;">✅ 改革成果</div>
+        <h4 style="margin-top:6px;">奠定竞争基础</h4>
+        <p>发电侧引入竞争，装机容量快速增长，电力供应能力大幅提升。但上网电价仍由政府核定，"计划电"格局未根本改变</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2015 中发9号文 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">4</div><h2>2015年：中发9号文——新一轮电改启动</h2></div>
+  <div class="page-card">
+    <p class="sub">《关于进一步深化电力体制改革的若干意见》——新电改的"总纲领"</p>
+    <div class="grid-3">
+      <div class="card-item" style="border-top:3px solid #3b82f6;">
+        <div style="font-size:24px;font-weight:900;color:#3b82f6;margin-bottom:6px;">01</div>
+        <h4>管住中间</h4>
+        <p>加强对输配电网环节的政府监管，核定输配电价，确保电网公平开放、公平交易</p>
+      </div>
+      <div class="card-item" style="border-top:3px solid #f59e0b;">
+        <div style="font-size:24px;font-weight:900;color:#f59e0b;margin-bottom:6px;">02</div>
+        <h4>放开两头</h4>
+        <p>发电侧和售电侧实行市场开放准入，引入竞争，放开用户选择权，价格由市场形成</p>
+      </div>
+      <div class="card-item" style="border-top:3px solid #10b981;">
+        <div style="font-size:24px;font-weight:900;color:#10b981;margin-bottom:6px;">03</div>
+        <h4>三有序、三推进</h4>
+        <p>有序放开竞争性电价、有序向社会资本放开配售电业务、有序放开公益性以外的发用电计划</p>
+      </div>
+    </div>
+    <div class="highlight-box"><p><strong>⚡ 核心定位：</strong> 9号文是新电改的"总纲领"，确立了电力市场化改革的方向和基本框架，是电力行业划时代的里程碑文件。</p></div>
+  </div>
+</div>
+
+<!-- ===== 十年三阶段 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">5</div><h2>十年三阶段：从起步探索到攻坚成熟</h2></div>
+  <div class="page-card">
+    <div class="phase-grid">
+      <div class="phase p1">
+        <div class="pyear">2015—2020</div>
+        <div class="ptitle">起步探索期</div>
+        <p>确立"管住中间、放开两头"框架，开展输配电价改革试点</p>
+        <ul><li>北京、广州两大国家级电力交易中心挂牌</li><li>首批现货市场试点启动（8个地区）</li><li>售电公司准入放开</li><li>市场化交易电量占比17%→约40%</li></ul>
+      </div>
+      <div class="phase p2">
+        <div class="pyear">2020—2022</div>
+        <div class="ptitle">加速扩围期</div>
+        <p>"双碳"目标提出，电改战略升维——从市场化扩展为服务绿色低碳转型</p>
+        <ul><li>燃煤发电上网电价全面市场化</li><li>全部工商业用户进入市场</li><li>新能源参与市场交易加速</li><li>全国统一电力市场指导意见出台</li></ul>
+      </div>
+      <div class="phase p3">
+        <div class="pyear">2022—至今</div>
+        <div class="ptitle">攻坚成熟期</div>
+        <p>从"政策驱动"走向"法制成型"，"1+6"基础规则体系建立</p>
+        <ul><li>电力市场运行基本规则发布</li><li>省级现货市场正式/连续运行</li><li>南方区域市场月结算试运行</li><li>2026年《实施意见》发布</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 管住中间放开两头 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">6</div><h2>"管住中间、放开两头"——改革核心框架</h2></div>
+  <div class="page-card">
+    <div class="grid-3">
+      <div class="card-item" style="background:#dbeafe;">
+        <h4 style="color:#1d4ed8;">⚡ 放开发电侧</h4>
+        <p>燃煤机组全部进入市场，超过半数新能源及部分燃气、核电、水电参与交易</p>
+        <p style="font-size:12px;color:#64748b;margin-top:8px;">✓ 发电企业直接参与市场竞价<br>✓ 多类型电源同台竞争</p>
+      </div>
+      <div class="card-item" style="background:#1e3a5f;color:#e2e8f0;text-align:center;">
+        <div style="color:#f59e0b;font-size:32px;margin-bottom:4px;">⚡</div>
+        <h4 style="color:#fff;">电网</h4>
+        <p style="color:#94a3b8;">政府监管输配电价<br>公平开放、公平交易</p>
+      </div>
+      <div class="card-item" style="background:#fef3c7;">
+        <h4 style="color:#d97706;">🏭 放开用户侧</h4>
+        <p>全部工商业用户进入市场，拥有自主选择购电方式和合作伙伴的权利</p>
+        <p style="font-size:12px;color:#64748b;margin-top:8px;">✓ 用户自主选择售电公司<br>✓ 市场化电价随行就市</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 多层次市场 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">7</div><h2>多层次统一电力市场体系</h2></div>
+  <div class="page-card">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;gap:12px;align-items:stretch;">
+        <div style="width:80px;flex-shrink:0;background:#8b5cf6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">跨电网</div>
+        <div style="flex:1;background:#f8fafc;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <div><strong>跨电网经营区交易</strong><br><span style="font-size:12px;color:#64748b;">国家电网与南方电网之间的互济互保</span></div>
+          <span style="font-size:12px;font-weight:700;color:#8b5cf6;">增强网间协同</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:stretch;">
+        <div style="width:80px;flex-shrink:0;background:#10b981;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">跨省区</div>
+        <div style="flex:1;background:#f8fafc;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <div><strong>省间/跨区交易</strong><br><span style="font-size:12px;color:#64748b;">大范围资源优化配置，服务国家能源战略</span></div>
+          <span style="font-size:12px;font-weight:700;color:#10b981;">2025年~1.6万亿kWh</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:stretch;">
+        <div style="width:80px;flex-shrink:0;background:#3b82f6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">区域</div>
+        <div style="flex:1;background:#f8fafc;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <div><strong>区域电力市场</strong><br><span style="font-size:12px;color:#64748b;">南方区域、长三角等区域市场协同运行</span></div>
+          <span style="font-size:12px;font-weight:700;color:#3b82f6;">月结算试运行</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:stretch;">
+        <div style="width:80px;flex-shrink:0;background:#f59e0b;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">省级</div>
+        <div style="flex:1;background:#f8fafc;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <div><strong>省级电力市场</strong><br><span style="font-size:12px;color:#64748b;">省内电量平衡与供应安全，现货+中长期连续运营</span></div>
+          <span style="font-size:12px;font-weight:700;color:#f59e0b;">全覆盖推进中</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;background:#f0f9ff;border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#1d4ed8;">
+      <i class="fa-regular fa-arrows-rotate"></i> 省、区域、省间高效协同，中长期、现货、辅助服务有机衔接
+    </div>
+  </div>
+</div>
+
+<!-- ===== 六大市场品类 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">8</div><h2>六大市场品类全景</h2></div>
+  <div class="page-card">
+    <div class="grid-6">
+      <div class="card-item" style="border-top:3px solid #3b82f6;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">📅</div>
+        <h4>中长期交易</h4>
+        <p>年度/月度/月内合同，锁定未来电量电价</p>
+        <span class="tag" style="background:#dbeafe;color:#1d4ed8;">占90%+</span>
+      </div>
+      <div class="card-item" style="border-top:3px solid #f59e0b;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">📊</div>
+        <h4>现货交易</h4>
+        <p>日前、实时市场，发现真实价格信号</p>
+        <span class="tag" style="background:#fef3c7;color:#d97706;">多地正式运行</span>
+      </div>
+      <div class="card-item" style="border-top:3px solid #10b981;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">⚙️</div>
+        <h4>辅助服务</h4>
+        <p>调频、调压、备用，保障电网稳定</p>
+        <span class="tag" style="background:#d1fae5;color:#047857;">谁受益谁分摊</span>
+      </div>
+      <div class="card-item" style="border-top:3px solid #8b5cf6;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#8b5cf6;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">🌿</div>
+        <h4>绿电绿证</h4>
+        <p>绿色消费凭证，ESG合规需求</p>
+        <span class="tag" style="background:#ede9fe;color:#6d28d9;">2024年+364%</span>
+      </div>
+      <div class="card-item" style="border-top:3px solid #ef4444;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#ef4444;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">🏪</div>
+        <h4>零售市场</h4>
+        <p>差异化套餐和增值服务</p>
+        <span class="tag" style="background:#fee2e2;color:#b91c1c;">5000+售电公司</span>
+      </div>
+      <div class="card-item" style="border-top:3px solid #ec4899;">
+        <div style="width:36px;height:36px;border-radius:8px;background:#ec4899;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:8px;font-size:14px;">🗄️</div>
+        <h4>容量市场</h4>
+        <p>为调节性资源提供容量补偿</p>
+        <span class="tag" style="background:#fce7f3;color:#be185d;">探索建设中</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 中长期交易 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">9</div><h2>中长期交易：市场的"压舱石"</h2></div>
+  <div class="page-card">
+    <div class="grid-2">
+      <div>
+        <div class="card-item" style="margin-bottom:12px;">
+          <h4>🕐 多时间维度</h4>
+          <p>覆盖年度、月度、月内等多周期合同，支持双边协商、挂牌、集中竞价等多种交易方式</p>
+        </div>
+        <div class="card-item" style="margin-bottom:12px;">
+          <h4>🛡️ 稳定市场预期</h4>
+          <p>中长期合同锁定电量和价格基准，为发电企业提供收入保障，为用户锁定用能成本</p>
+        </div>
+        <div class="card-item" style="margin-bottom:12px;">
+          <h4>🔗 与现货衔接</h4>
+          <p>中长期合同带曲线分解至日，以现货价格为锚定，实现"中长期锁定、现货调整"</p>
+        </div>
+      </div>
+      <div>
+        <div class="card-item" style="background:#f0f9ff;">
+          <h4 style="color:#1d4ed8;">关键数据</h4>
+          <table>
+            <tr><td>占市场化电量比重</td><td><strong>&gt;90%</strong></td></tr>
+            <tr><td>交易状态</td><td><strong>已常态化开市</strong></td></tr>
+            <tr><td>最新规则</td><td><strong>2025年新版《电力中长期市场基本规则》</strong></td></tr>
+            <tr><td>创新方向</td><td><strong>多年期购电协议试点</strong></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 现货市场 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">10</div><h2>现货市场：从无到有的突破</h2></div>
+  <div class="page-card">
+    <p class="sub">日前市场 + 实时市场，发现电力的时空价值</p>
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card-item" style="border-left:4px solid #f59e0b;">
+        <h4>☀️ 日前市场</h4>
+        <p>运行日前一天申报次日发电/用电曲线，集中出清形成日前价格信号，引导市场主体安排生产计划</p>
+      </div>
+      <div class="card-item" style="border-left:4px solid #3b82f6;">
+        <h4>🕐 实时市场</h4>
+        <p>运行前15分钟至1小时申报，平衡实时供需偏差，逐步推进15分钟/5分钟结算周期</p>
+      </div>
+    </div>
+    <div class="highlight-box"><p><strong>建设进展：</strong> 5个省级和国网省间现货已转入正式运行，7个省级进入连续结算试运行，南方区域市场开展整月结算试运行，长三角区域市场建立电力互济交易机制</p></div>
+  </div>
+</div>
+
+<!-- ===== 辅助服务 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">11</div><h2>辅助服务市场：电力系统的"稳定器"</h2></div>
+  <div class="page-card">
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="card-item" style="background:#ecfdf5;display:flex;gap:12px;align-items:center;padding:12px 16px;">
+          <div style="width:32px;height:32px;border-radius:6px;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">〰️</div>
+          <div><strong>调频服务</strong><br><span style="font-size:12px;color:#64748b;">快速响应出力调节，维持电网频率稳定</span></div>
+        </div>
+        <div class="card-item" style="background:#fff7ed;display:flex;gap:12px;align-items:center;padding:12px 16px;">
+          <div style="width:32px;height:32px;border-radius:6px;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">📊</div>
+          <div><strong>调压/无功支撑</strong><br><span style="font-size:12px;color:#64748b;">维持各节点电压在允许范围内</span></div>
+        </div>
+        <div class="card-item" style="background:#f0f9ff;display:flex;gap:12px;align-items:center;padding:12px 16px;">
+          <div style="width:32px;height:32px;border-radius:6px;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">💾</div>
+          <div><strong>备用服务</strong><br><span style="font-size:12px;color:#64748b;">旋转备用、冷备用，应对突发故障</span></div>
+        </div>
+      </div>
+      <div class="card-item" style="background:#f0f9ff;">
+        <h4 style="color:#1d4ed8;">发展趋势</h4>
+        <p style="font-size:13px;">新能源出力越大，辅助服务需求越高。</p>
+        <p style="font-size:13px;font-weight:700;color:#1d4ed8;">"谁受益、谁分摊"</p>
+        <p style="font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid #dbeafe;">新型储能、虚拟电厂等也可提供辅助服务并获得收益</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1+6规则体系 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">12</div><h2>"1+6"基础规则体系</h2></div>
+  <div class="page-card">
+    <p class="sub">全国统一电力市场的制度基石</p>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="display:inline-block;background:linear-gradient(135deg,#1e3a5f,#0f1f3a);border-radius:50%;width:100px;height:100px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+        <div style="font-size:14px;font-weight:700;">基本规则</div>
+        <div style="font-size:10px;color:#f59e0b;">电力市场运行基本规则</div>
+      </div>
+    </div>
+    <div class="grid-6">
+      <div class="card-item" style="border-left:3px solid #3b82f6;"><div style="font-size:11px;color:#94a3b8;">主干①</div><h4 style="font-size:14px;">中长期交易规则</h4></div>
+      <div class="card-item" style="border-left:3px solid #f59e0b;"><div style="font-size:11px;color:#94a3b8;">主干②</div><h4 style="font-size:14px;">现货交易规则</h4></div>
+      <div class="card-item" style="border-left:3px solid #10b981;"><div style="font-size:11px;color:#94a3b8;">主干③</div><h4 style="font-size:14px;">辅助服务规则</h4></div>
+      <div class="card-item" style="border-left:3px solid #8b5cf6;"><div style="font-size:11px;color:#94a3b8;">支撑①</div><h4 style="font-size:14px;">市场注册规则</h4></div>
+      <div class="card-item" style="border-left:3px solid #ef4444;"><div style="font-size:11px;color:#94a3b8;">支撑②</div><h4 style="font-size:14px;">计量结算规则</h4></div>
+      <div class="card-item" style="border-left:3px solid #ec4899;"><div style="font-size:11px;color:#94a3b8;">支撑③</div><h4 style="font-size:14px;">信息披露规则</h4></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 十年成果：交易电量 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">13</div><h2>市场化交易电量：10年增长5倍</h2></div>
+  <div class="page-card">
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">6.6万亿</div><div class="label">2025年市场化交易电量</div></div>
+      <div class="kpi"><div class="num">64%</div><div class="label">市场化占比</div></div>
+      <div class="kpi"><div class="num">1.6万亿</div><div class="label">跨省跨区交易</div></div>
+    </div>
+    <div class="chart-placeholder">
+      <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:8px;">市场化交易电量增长趋势（万亿kWh）</div>
+      <div class="bar-item"><span class="bar-label">2016</span><div class="bar-fill" style="width:16%;background:#3b82f6;">1.1</div></div>
+      <div class="bar-item"><span class="bar-label">2018</span><div class="bar-fill" style="width:30%;background:#3b82f6;">2.1</div></div>
+      <div class="bar-item"><span class="bar-label">2020</span><div class="bar-fill" style="width:45%;background:#3b82f6;">3.2</div></div>
+      <div class="bar-item"><span class="bar-label">2022</span><div class="bar-fill" style="width:64%;background:#3b82f6;">4.5</div></div>
+      <div class="bar-item"><span class="bar-label">2024</span><div class="bar-fill" style="width:88%;background:#3b82f6;">6.2</div></div>
+      <div class="bar-item"><span class="bar-label">2025</span><div class="bar-fill" style="width:94%;background:#f59e0b;">6.6</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 市场主体 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">14</div><h2>市场主体爆发式增长</h2></div>
+  <div class="page-card">
+    <div style="text-align:center;padding:16px 0 24px;">
+      <div style="font-size:52px;font-weight:900;color:#3b82f6;">109万+</div>
+      <div style="font-size:15px;color:#475569;">注册参与交易的市场主体</div>
+      <div style="font-size:13px;color:#94a3b8;">2015年仅4.2万家 · 增长近22倍</div>
+    </div>
+    <div class="grid-4">
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#3b82f6;">100%</div>
+        <div style="font-size:12px;color:#64748b;">燃煤机组全部入市</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#f59e0b;">全部</div>
+        <div style="font-size:12px;color:#64748b;">工商业用户进入市场</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#10b981;">~60%</div>
+        <div style="font-size:12px;color:#64748b;">新能源进入市场</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:#8b5cf6;">4000+</div>
+        <div style="font-size:12px;color:#64748b;">新型经营主体</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 售电公司 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">15</div><h2>售电公司崛起：连接发电与用户的新桥梁</h2></div>
+  <div class="page-card">
+    <p class="sub">改革催生的新兴市场主体，推动售电侧竞争与服务创新</p>
+    <div class="grid-3">
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:32px;font-weight:900;color:#3b82f6;">5,000<span style="font-size:16px;color:#64748b;">+家</span></div>
+        <div style="font-size:13px;color:#64748b;margin-top:4px;">售电公司提供购电服务和增值解决方案</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:32px;font-weight:900;color:#f59e0b;">50万<span style="font-size:16px;color:#64748b;">+名</span></div>
+        <div style="font-size:13px;color:#64748b;margin-top:4px;">电力交易员支撑全流程专业化运营</div>
+      </div>
+      <div class="card-item">
+        <h4>🔄 从单一购电 → 综合能源服务商</h4>
+        <p style="font-size:12px;">节能改造、用电管理、设备运维、负荷聚合、绿电绿证、碳管理——售电公司正从"电价差"模式向综合能源服务转型</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 绿电绿证 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">16</div><h2>绿电绿证：跨越式发展</h2></div>
+  <div class="page-card">
+    <div class="grid-3">
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:#10b981;">4,460亿</div>
+        <div style="font-size:12px;color:#64748b;">2024年绿证绿电交易电量</div>
+        <div style="font-size:11px;color:#94a3b8;">同比增长364%</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:#3b82f6;">9,780亿</div>
+        <div style="font-size:12px;color:#64748b;">2025年绿证绿电交易</div>
+        <div style="font-size:11px;color:#94a3b8;">超72%获环境价值收益</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;font-weight:900;color:#f59e0b;">~1/4</div>
+        <div style="font-size:12px;color:#64748b;">新能源环境价值兑现</div>
+        <div style="font-size:11px;color:#94a3b8;">通过绿证绿电市场实现</div>
+      </div>
+    </div>
+    <div class="chart-placeholder" style="margin-top:12px;">
+      <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:8px;">绿电绿证交易电量增长趋势（亿kWh）</div>
+      <div class="bar-item"><span class="bar-label">2021</span><div class="bar-fill" style="width:3%;background:#10b981;">280</div></div>
+      <div class="bar-item"><span class="bar-label">2023</span><div class="bar-fill" style="width:10%;background:#10b981;">960</div></div>
+      <div class="bar-item"><span class="bar-label">2024</span><div class="bar-fill" style="width:46%;background:#10b981;">4,460</div></div>
+      <div class="bar-item"><span class="bar-label">2025</span><div class="bar-fill" style="width:100%;background:#f59e0b;">9,780</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 新能源市场化消纳 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">17</div><h2>新能源市场化：绿色转型加速</h2></div>
+  <div class="page-card">
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">14.5亿</div><div class="label">新能源装机占总装机43%</div></div>
+      <div class="kpi"><div class="num">50%+</div><div class="label">新能源发电量通过市场化消纳</div></div>
+      <div class="kpi"><div class="num">1.35万亿</div><div class="label">2025年新能源市场化交易电量</div></div>
+    </div>
+    <div class="card-item" style="background:#f0fdf4;">
+      <h4 style="color:#047857;">市场化促进新能源消纳的关键机制</h4>
+      <div class="grid-2" style="font-size:13px;color:#475569;">
+        <div>✓ 新能源参与现货市场，通过低价时段竞争消纳</div>
+        <div>✓ 绿电绿证市场实现环境价值兑现</div>
+        <div>✓ 省间现货市场促进新能源跨区消纳</div>
+        <div>✓ 辅助服务市场为新能源消纳提供调峰支撑</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 电价国际比较 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">18</div><h2>"能涨能跌"的市场化电价机制</h2></div>
+  <div class="page-card">
+    <p class="sub">在保障用能成本可控的前提下，让价格信号回归市场</p>
+    <div class="grid-2">
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:36px;font-weight:900;color:#10b981;">32%</div>
+        <div style="font-size:13px;color:#475569;"><strong>居民电价</strong> 为全球50个主要经济体平均水平</div>
+        <div style="font-size:11px;color:#94a3b8;">位列第44位（越低越便宜）</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:36px;font-weight:900;color:#3b82f6;">39%</div>
+        <div style="font-size:13px;color:#475569;"><strong>工商业电价</strong> 为全球50个主要经济体平均水平</div>
+        <div style="font-size:11px;color:#94a3b8;">位列第44位，巩固制造业国际竞争力</div>
+      </div>
+    </div>
+    <div class="highlight-box"><p><strong>改革红利：</strong> 在全球能源供应趋紧、价格大幅波动背景下，我国通过完善电价机制、推进市场化交易，保障了电价的基本稳定</p></div>
+  </div>
+</div>
+
+<!-- ===== 电力保供 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">19</div><h2>电力保供：市场化手段保障供应安全</h2></div>
+  <div class="page-card">
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">1.51亿</div><div class="label">2025迎峰度夏跨区最大送电（kW）</div></div>
+      <div class="kpi"><div class="num">+900万</div><div class="label">较2024年峰值增加（kW）</div></div>
+      <div class="kpi"><div class="num">"十四五"最佳</div><div class="label">迎峰度夏保供成效</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card-item"><h4>🌐 大范围资源调配</h4><p>2024年迎峰度夏期间最大支援华东、西南1400万千瓦，未启动有序用电</p></div>
+      <div class="card-item"><h4>📶 价格引导调节</h4><p>高峰时段高电价信号，激励发电顶峰，引导用户错峰，实现供需动态平衡</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 系统运行费 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">20</div><h2>系统运行费用六项详解</h2></div>
+  <div class="page-card">
+    <p class="sub">省级价格主管部门按月核定 · 全体工商业用户统一分摊</p>
+    <div class="grid-3">
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">① 抽水蓄能容量电费</div><p style="font-size:12px;">电网向抽水蓄能电站支付的固定容量费用，按年度总额÷预测用电量按月分摊</p></div>
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">② 上网环节线损代理采购损益</div><p style="font-size:12px;">实际线损率与核定线损率（4.24%）的差额损益，随负荷率、气温逐月清算</p></div>
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">③ 电价交叉补贴新增损益</div><p style="font-size:12px;">居民/农业电价低于成本，工商业补贴部分的差额</p></div>
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">④ 新能源机制差价分摊电费</div><p style="font-size:12px;">新能源上网价高于燃煤基准价的部分，随新能源发电量变化</p></div>
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">⑤ 辅助服务费</div><p style="font-size:12px;">保障电网稳定的调频调压备用费用，新能源出力越大需求越高</p></div>
+      <div class="card-item"><div style="font-weight:700;color:#3b82f6;">⑥ 煤电容量电费</div><p style="font-size:12px;">对煤电按可用容量支付的顶峰补偿，低负荷月份分摊单价上升</p></div>
+    </div>
+    <div class="highlight-box"><p><strong>计算逻辑：</strong> 某项费用度电单价 = 该费用当月全省总额 ÷ 当月全省工商业总用电量；企业承担额 = 单价 × 企业实际用电量</p></div>
+  </div>
+</div>
+
+<!-- ===== 新能源全面入市 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">21</div><h2>新能源全面入市：政策背景</h2></div>
+  <div class="page-card">
+    <p class="sub">从固定补贴到市场定价，新能源电价改革的里程碑</p>
+    <div class="timeline">
+      <div class="tl-point"><div class="dot" style="background:#3b82f6;"></div><div class="date">2021年前</div><div class="desc">固定补贴/标杆电价</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-point"><div class="dot" style="background:#f59e0b;"></div><div class="date">2021-2025</div><div class="desc">逐步参与市场</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-point"><div class="dot" style="background:#10b981;"></div><div class="date">2026.01</div><div class="desc">全面进入市场</div></div>
+      <div class="tl-line"></div>
+      <div class="tl-point"><div class="dot" style="background:#ef4444;"></div><div class="date">未来</div><div class="desc">统一市场定价</div></div>
+    </div>
+    <div class="card-item" style="background:#f0f9ff;">
+      <h4 style="color:#1d4ed8;">陕西省新能源上网电价市场化改革（2025年10月印发）</h4>
+      <div class="grid-2" style="font-size:13px;">
+        <div><strong>全面入市</strong><br>风电光伏原则上全部进入市场</div>
+        <div><strong>差价结算机制</strong><br>可持续发展价格结算机制</div>
+        <div><strong>现货限价</strong><br>0~1元/kWh</div>
+        <div><strong>分布式入市</strong><br>可直接或聚合后参与交易</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 差价结算机制 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">22</div><h2>可持续发展价格结算机制</h2></div>
+  <div class="page-card">
+    <p class="sub">差价结算公式：平衡项目收益稳定与用户侧承受能力</p>
+    <div class="formula-box">
+      <div class="formula">
+        差价结算费用 = 机制电量 × (<span class="hl">机制电价</span> — <span class="hl2">市场交易均价</span>)
+      </div>
+      <div class="formula-note">纳入系统运行费，由全体工商业用户按月统一分摊或分享</div>
+    </div>
+    <div class="two-case">
+      <div class="case down">
+        <div class="case-icon">📉</div>
+        <h4>市场价 &lt; 机制价</h4>
+        <p>当市场交易均价低于机制电价时，对新能源项目进行补差，保障项目基本收益</p>
+        <div class="result">产生补差费用 → 工商业用户分摊</div>
+      </div>
+      <div class="case up">
+        <div class="case-icon">📈</div>
+        <h4>市场价 &gt; 机制价</h4>
+        <p>当市场交易均价高于机制电价时，差额由工商业用户分享，降低用电成本</p>
+        <div class="result">负向差额 → 工商业用户分享</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 存量vs增量 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">23</div><h2>存量 vs 增量项目：差异化入市路径</h2></div>
+  <div class="page-card">
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="display:inline-block;background:#1e3a5f;color:#fff;padding:6px 20px;border-radius:6px;font-size:14px;font-weight:700;">2025年6月1日 · 存量与增量项目划分基准日</div>
+    </div>
+    <div class="two-case">
+      <div class="case down">
+        <div style="display:inline-block;background:#3b82f6;color:#fff;padding:2px 10px;border-radius:4px;font-size:11px;font-weight:700;margin-bottom:8px;">存量项目</div>
+        <h4>平稳衔接 · 收益稳定</h4>
+        <p style="font-size:12px;color:#64748b;margin-bottom:8px;">2025年6月1日前全容量投产</p>
+        <ul style="font-size:13px;color:#475569;padding-left:16px;">
+          <li>分布式、光伏扶贫、领跑者项目：全电量纳入机制电量</li>
+          <li>集中式光伏、风电：2026-2030年按75%纳入</li>
+          <li>机制电价 = 煤电基准价</li>
+        </ul>
+      </div>
+      <div class="case up">
+        <div style="display:inline-block;background:#f59e0b;color:#fff;padding:2px 10px;border-radius:4px;font-size:11px;font-weight:700;margin-bottom:8px;">增量项目</div>
+        <h4>市场竞价 · 优胜劣汰</h4>
+        <p style="font-size:12px;color:#64748b;margin-bottom:8px;">2025年6月1日起全容量投产</p>
+        <ul style="font-size:13px;color:#475569;padding-left:16px;">
+          <li>通过竞价确定机制电价与机制电量</li>
+          <li>竞价上限0.3545元/kWh，下限0.23元/kWh</li>
+          <li>按报价从低到高确定入选，执行12年</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 对各市场主体的影响 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">24</div><h2>新能源入市对各市场主体的影响</h2></div>
+  <div class="page-card">
+    <div class="role-grid">
+      <div class="card-item" style="background:#f0f9ff;">
+        <div style="font-size:28px;margin-bottom:6px;">💨</div>
+        <h4>发电企业</h4>
+        <p>项目收益与现货价格、中长期合同、竞价结果紧密相关。需从"建设导向"转向"建设+交易+运营"并重</p>
+        <div style="font-size:12px;font-weight:700;color:#1d4ed8;margin-top:8px;">→ 提升交易能力与价格预测</div>
+      </div>
+      <div class="card-item" style="background:#fffbeb;">
+        <div style="font-size:28px;margin-bottom:6px;">🏭</div>
+        <h4>工商业用户</h4>
+        <p>用电成本与市场价格联动增强，需关注新能源市场价格变化对到户电价的传导</p>
+        <div style="font-size:12px;font-weight:700;color:#d97706;margin-top:8px;">→ 关注电价结构变化与优化空间</div>
+      </div>
+      <div class="card-item" style="background:#ecfdf5;">
+        <div style="font-size:28px;margin-bottom:6px;">🤝</div>
+        <h4>售电公司与聚合商</h4>
+        <p>多年期购电协议、绿电绿证、分布式聚合、现货风险管理成为提升客户价值的重要方向</p>
+        <div style="font-size:12px;font-weight:700;color:#047857;margin-top:8px;">→ 拓展综合能源服务能力</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2026实施意见 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">25</div><h2>2026年《实施意见》——未来5-10年纲领</h2></div>
+  <div class="page-card">
+    <div class="card-item" style="background:#f8fafc;border-left:4px solid #f59e0b;margin-bottom:16px;">
+      <h4>《关于完善全国统一电力市场体系的实施意见》</h4>
+      <p style="font-size:13px;color:#64748b;">2026年2月国务院办公厅印发 · 5方面19项重点任务 · 六大创新举措</p>
+    </div>
+    <div class="grid-3">
+      <div class="card-item"><h4>🔄 统一报价联合交易</h4><p style="font-size:12px;">各层次市场从"各自报价"转向联合交易</p></div>
+      <div class="card-item"><h4>🌐 跨省跨区交易</h4><p style="font-size:12px;">促进跨电网常态化交易</p></div>
+      <div class="card-item"><h4>🗄️ 探索容量市场</h4><p style="font-size:12px;">市场化手段引导调节电源发展</p></div>
+      <div class="card-item"><h4>🌿 新能源差异化入市</h4><p style="font-size:12px;">沙戈荒与分布式不同路径</p></div>
+      <div class="card-item"><h4>👥 民营企业参与</h4><p style="font-size:12px;">新型主体灵活参与市场</p></div>
+      <div class="card-item"><h4>⚖️ 多元治理体系</h4><p style="font-size:12px;">政府+监管+管委会+运营机构</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2030/2035目标 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">26</div><h2>全国统一电力市场两阶段目标</h2></div>
+  <div class="page-card">
+    <div class="two-case">
+      <div class="case down">
+        <div style="font-size:36px;font-weight:900;color:#3b82f6;">2030</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:12px;">基本建成</div>
+        <div style="font-size:28px;font-weight:900;color:#3b82f6;margin-bottom:10px;">~70%</div>
+        <ul style="font-size:13px;color:#475569;padding-left:16px;">
+          <li>各类型电源全部直接参与市场</li>
+          <li>市场化交易占比达70%</li>
+          <li>跨省跨区和省内联合交易</li>
+          <li>现货市场全面正式运行</li>
+          <li>规则和技术标准全面统一</li>
+        </ul>
+      </div>
+      <div class="case up">
+        <div style="font-size:36px;font-weight:900;color:#10b981;">2035</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:12px;">全面建成</div>
+        <div style="font-size:28px;font-weight:900;color:#10b981;margin-bottom:10px;">100%</div>
+        <ul style="font-size:13px;color:#475569;padding-left:16px;">
+          <li>跨省跨区和省内交易有机融合</li>
+          <li>电能量、调节、环境、容量多维价值由市场反映</li>
+          <li>全国范围内优化配置和高效利用</li>
+          <li>以电力为主体的全国统一能源市场体系</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 统一报价联合交易 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">27</div><h2>"统一报价、联合交易"新格局</h2></div>
+  <div class="page-card">
+    <p class="sub">打破省间壁垒，推动多层次市场深度融合</p>
+    <div class="two-case" style="margin-bottom:16px;">
+      <div class="card-item" style="border:2px dashed #cbd5e1;">
+        <h4 style="color:#64748b;">当前：各自报价、各自交易</h4>
+        <p style="font-size:13px;">省内、省间市场独立运行，各省规则不统一</p>
+      </div>
+      <div class="card-item" style="border:2px solid #3b82f6;">
+        <h4 style="color:#1d4ed8;">未来：统一报价、联合交易</h4>
+        <p style="font-size:13px;">全国统一规则下申报量价，省间省内统一出清</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card-item"><h4>📦 三层融合路径</h4><p style="font-size:12px;">初期：省内预出清→省间整合→再集中出清；后期：省间先全量出清</p></div>
+      <div class="card-item"><h4>🔗 区域市场先行</h4><p style="font-size:12px;">南方区域一体化、长三角互济，为全国融合积累经验</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 跨省跨区 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">28</div><h2>跨省跨区交易：全国大循环</h2></div>
+  <div class="page-card">
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">~1.6万亿</div><div class="label">2025年跨省跨区交易电量</div></div>
+      <div class="kpi"><div class="num">10余倍</div><div class="label">较2015年增长</div></div>
+      <div class="kpi"><div class="num">探索中</div><div class="label">两部制跨省输电价格</div></div>
+    </div>
+    <div class="chart-placeholder">
+      <div style="font-size:13px;font-weight:700;color:#0f172a;margin-bottom:8px;">跨省跨区交易电量（万亿kWh）</div>
+      <div class="bar-item"><span class="bar-label">2015</span><div class="bar-fill" style="width:6%;background:#3b82f6;">0.1</div></div>
+      <div class="bar-item"><span class="bar-label">2020</span><div class="bar-fill" style="width:44%;background:#3b82f6;">0.7</div></div>
+      <div class="bar-item"><span class="bar-label">2024</span><div class="bar-fill" style="width:88%;background:#3b82f6;">1.4</div></div>
+      <div class="bar-item"><span class="bar-label">2025</span><div class="bar-fill" style="width:100%;background:#f59e0b;">1.6</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 容量市场 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">29</div><h2>探索建立容量市场</h2></div>
+  <div class="page-card">
+    <p style="font-size:14px;color:#475569;margin-bottom:16px;">容量市场为发电资源可用容量提供额外补偿，引导支撑性调节电源有序发展，保障系统可靠容量长期充裕。</p>
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card-item" style="text-align:center;"><div style="font-size:28px;margin-bottom:6px;">🔥</div><h4>煤电</h4><p style="font-size:12px;">现有容量电价基础上逐步纳入市场化补偿</p></div>
+      <div class="card-item" style="text-align:center;"><div style="font-size:28px;margin-bottom:6px;">💧</div><h4>抽水蓄能</h4><p style="font-size:12px;">容量电费由系统运行费分摊</p></div>
+      <div class="card-item" style="text-align:center;"><div style="font-size:28px;margin-bottom:6px;">🔋</div><h4>新型储能</h4><p style="font-size:12px;">容量租赁+市场化容量补偿双收益</p></div>
+    </div>
+    <div class="highlight-box"><p><strong>政策方向：</strong> 有序建立可靠容量补偿机制，<strong>支持有条件的地区探索容量市场</strong></p></div>
+  </div>
+</div>
+
+<!-- ===== 新型主体 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">30</div><h2>新型经营主体加速入场</h2></div>
+  <div class="page-card">
+    <div class="grid-3">
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🔋</div>
+        <h4>新型储能</h4>
+        <p style="font-size:12px;">装机突破1.36亿kW，拉动投资2000亿+</p>
+        <div style="font-size:12px;font-weight:700;color:#8b5cf6;">低买高卖+容量补偿</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">☁️</div>
+        <h4>虚拟电厂</h4>
+        <p style="font-size:12px;">最大调节能力超1600万kW</p>
+        <div style="font-size:12px;font-weight:700;color:#ec4899;">整合分布式资源和可控负荷</div>
+      </div>
+      <div class="card-item" style="text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🚗</div>
+        <h4>车网互动</h4>
+        <p style="font-size:12px;">聚合资源超1900万kW</p>
+        <div style="font-size:12px;font-weight:700;color:#f97316;">灵活响应市场信号</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 治理体系 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">31</div><h2>多元化电力市场治理体系</h2></div>
+  <div class="page-card">
+    <div class="grid-4">
+      <div class="card-item" style="background:#eff6ff;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">🏛️</div>
+        <h4>政府主管部门</h4>
+        <p style="font-size:12px;">总体设计、规则制定、政策引导</p>
+      </div>
+      <div class="card-item" style="background:#fef2f2;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">⚖️</div>
+        <h4>电力监管机构</h4>
+        <p style="font-size:12px;">依法独立监管，维护市场秩序</p>
+      </div>
+      <div class="card-item" style="background:#fffbeb;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">🤝</div>
+        <h4>市场管理委员会</h4>
+        <p style="font-size:12px;">议事协调、协商共治</p>
+      </div>
+      <div class="card-item" style="background:#f0fdf4;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;">⚙️</div>
+        <h4>市场运营机构</h4>
+        <p style="font-size:12px;">交易服务+安全运行+风险监测</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 十五五三大方向 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">32</div><h2>"十五五"电力市场改革三大方向</h2></div>
+  <div class="page-card">
+    <div class="role-grid">
+      <div class="card-item" style="background:#eff6ff;">
+        <div style="font-size:28px;margin-bottom:6px;">📊</div>
+        <h4>市场化</h4>
+        <p style="font-size:12px;">深化价格形成机制，完善多层次市场体系与风险管理</p>
+        <ul style="font-size:12px;color:#475569;padding-left:16px;margin-top:8px;">
+          <li>降低强制性中长期合同比例，放宽限价区间</li>
+          <li>需求侧"报量报价"参与现货出清</li>
+          <li>探索电力期货、差价合约等金融衍生品</li>
+        </ul>
+      </div>
+      <div class="card-item" style="background:#ecfdf5;">
+        <div style="font-size:28px;margin-bottom:6px;">🌿</div>
+        <h4>低碳化</h4>
+        <p style="font-size:12px;">构建适配新能源的市场支撑体系</p>
+        <ul style="font-size:12px;color:#475569;padding-left:16px;margin-top:8px;">
+          <li>放宽现货价格上下限，推进15分钟结算</li>
+          <li>扩大辅助服务品种和覆盖范围</li>
+          <li>储能、虚拟电厂独立参与市场</li>
+        </ul>
+      </div>
+      <div class="card-item" style="background:#fffbeb;">
+        <div style="font-size:28px;margin-bottom:6px;">🌐</div>
+        <h4>一体化</h4>
+        <p style="font-size:12px;">优化全国统一的资源配置体系</p>
+        <ul style="font-size:12px;color:#475569;padding-left:16px;margin-top:8px;">
+          <li>统一市场设计框架和技术标准</li>
+          <li>"统一报价、协同出清"运行模式</li>
+          <li>省内省间市场深度融合</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 新型电力系统展望 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">33</div><h2>新型电力系统与市场协同演进</h2></div>
+  <div class="page-card">
+    <div class="grid-2">
+      <div class="card-item"><div style="font-size:24px;">🔋</div><h4>高比例新能源</h4><p style="font-size:12px;">新能源从补充变为主力，市场适配高波动性、低边际成本电源</p></div>
+      <div class="card-item"><div style="font-size:24px;">⚡</div><h4>数字化智能化</h4><p style="font-size:12px;">5G、AI、区块链赋能交易、调度和监测</p></div>
+      <div class="card-item"><div style="font-size:24px;">🔄</div><h4>多元价值实现</h4><p style="font-size:12px;">电能量+调节+环境+容量多维价值通过市场体现</p></div>
+      <div class="card-item"><div style="font-size:24px;">🌐</div><h4>全国统一大市场</h4><p style="font-size:12px;">电力资源在全国自由流动、优化配置</p></div>
+    </div>
+    <div class="highlight-box" style="margin-top:16px;"><p><strong>改革愿景：</strong> 到2035年全面建成全国统一电力市场体系，电力资源的电能量、调节、环境、容量等多维价值全面由市场反映</p></div>
+  </div>
+</div>
+
+<!-- ===== 总结 ===== -->
+<div class="section">
+  <div class="section-header"><div class="num">34</div><h2>总结：十年电改的关键启示</h2></div>
+  <div class="page-card">
+    <div class="insight-list">
+      <div class="insight-item"><div class="inum" style="background:#3b82f6;">1</div><div><h4>市场配置资源的决定性作用</h4><p>市场化交易电量从1.1万亿增至6.6万亿，市场已成为电力资源配置的主要手段</p></div></div>
+      <div class="insight-item"><div class="inum" style="background:#f59e0b;">2</div><div><h4>"管住中间、放开两头"行之有效</h4><p>在保障电网安全的前提下释放市场活力</p></div></div>
+      <div class="insight-item"><div class="inum" style="background:#10b981;">3</div><div><h4>市场化与绿色化协同推进</h4><p>超50%新能源通过市场化消纳，绿电市场爆发式增长</p></div></div>
+      <div class="insight-item"><div class="inum" style="background:#8b5cf6;">4</div><div><h4>多元主体参与激发创新活力</h4><p>109万市场主体、5000+售电公司、4000+新型经营主体</p></div></div>
+      <div class="insight-item"><div class="inum" style="background:#ef4444;">5</div><div><h4>改革永远在路上</h4><p>全国统一电力市场建设进入攻坚期，仍需持续深化改革</p></div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  <h3>感谢聆听 · 欢迎交流</h3>
+  <p>中国电力市场改革培训材料 · 2026年7月</p>
+  <p style="font-size:12px;margin-top:8px;">基于公开政策文件 · 仅供学习参考</p>
+</div>
+
+</body>
+</html>
